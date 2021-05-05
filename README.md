@@ -1,8 +1,10 @@
 # Hi there 👋
 
+(If you are looking for my portfolio site README, its at https://github.com/EpicGamer007/EpicGamer007/blob/master/site.md)
+
 <p align="center"><img src="https://komarev.com/ghpvc/?username=EpicGamer007" alt="EpicGamer007"/></p>
 
-- 🔭 I’m currently working on too many things to count
+- 🔭 I’m currently working on Snake in C++, a dev.to clone, my portfolio site, and a game with ThreeJS.
 - 🌱 I’m currently learning C++
 - 👯 I’m looking to collaborate on NodeJS and Java projects
 - 🤔 I’m looking for help with C++
