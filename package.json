@@ -9,6 +9,10 @@
 		"dev": "node --abort-on-uncaught-exception --throw-deprecation --trace-warnings --unhandled-rejections=strict src",
 		"prettier": "npx prettier --write --use-tabs --tab-width 4 src"
 	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/EpicGamer007/EpicGamer007.git"
+	},
 	"keywords": [
 		"portfolio",
 		"abhay",
@@ -25,5 +29,9 @@
 	},
 	"devDependencies": {
 		"prettier": "^2.2.1"
-	}
+	},
+	"bugs": {
+		"url": "https://github.com/EpicGamer007/EpicGamer007/issues"
+	},
+	"homepage": "https://github.com/EpicGamer007/EpicGamer007#readme"
 }
