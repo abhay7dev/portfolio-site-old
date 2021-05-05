@@ -1,6 +1,6 @@
 # Hi there 👋
 
-<p align="center">![EpicGamer007](https://komarev.com/ghpvc/?username=EpicGamer007)</p> 
+<p align="center"><img src="https://komarev.com/ghpvc/?username=EpicGamer007" alt="EpicGamer007"/></p>
 
 - 🔭 I’m currently working on too many things to count
 - 🌱 I’m currently learning C++
