@@ -3,5 +3,5 @@ import staticRouter from "./routers/static.js";
 
 export default {
 	clientRouter,
-	staticRouter
-}
+	staticRouter,
+};

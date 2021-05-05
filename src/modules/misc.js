@@ -36,6 +36,6 @@ export function data(req, res, next) {
 	res.removeHeader("x-frame-options");
 
 	res.data = {};
-	
+
 	next();
 }

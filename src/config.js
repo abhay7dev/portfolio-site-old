@@ -6,8 +6,16 @@ export const serverSettings = {
 	REPL_SLUG: env.REPL_SLUG,
 	REPL_OWNER: env.REPL_OWNER,
 	PORT: env.PORT || 5050,
-	HREF: `https://${env.REPL_SLUG == env.REPL_OWNER ? `${env.REPL_OWNER}.repl.co` : `${env.REPL_SLUG}.${env.REPL_OWNER}.repl.co`}`,
-	DOMAIN: `${env.REPL_SLUG == env.REPL_OWNER ? `${env.REPL_SLUG}.repl.co` : `${env.REPL_SLUG}.${env.OWNER}.repl.co`}`
+	HREF: `https://${
+		env.REPL_SLUG == env.REPL_OWNER
+			? `${env.REPL_OWNER}.repl.co`
+			: `${env.REPL_SLUG}.${env.REPL_OWNER}.repl.co`
+	}`,
+	DOMAIN: `${
+		env.REPL_SLUG == env.REPL_OWNER
+			? `${env.REPL_SLUG}.repl.co`
+			: `${env.REPL_SLUG}.${env.OWNER}.repl.co`
+	}`,
 };
 
 export const errors = {
@@ -26,6 +34,7 @@ export const errors = {
 	},
 	500: {
 		errorType: "500 Internal server error",
-		errorMessage: "The server could not handle the request which caused an error in returning the resource",
+		errorMessage:
+			"The server could not handle the request which caused an error in returning the resource",
 	},
 };

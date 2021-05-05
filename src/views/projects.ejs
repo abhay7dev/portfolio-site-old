@@ -1,0 +1,5 @@
+<% data.projects.forEach(pro => {%>
+	<%- include("./components/project-thumbnail", { data: pro }) %>
+<% }) %>
+<%- contentFor("title") %>
+My Projects

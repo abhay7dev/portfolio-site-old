@@ -20,7 +20,7 @@ app.set("layout extractMetas", true);
 app.use(helmet({ xssFilter: false }));
 
 app.use(layouts);
-app.use(routers.staticRouter)
+app.use(routers.staticRouter);
 app.use(routers.clientRouter);
 
 app.use((req, res) => {
