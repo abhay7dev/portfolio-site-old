@@ -1,0 +1,23 @@
+@font-face {
+	font-family: halo;
+	src: url(/static/fonts/halo.ttf);
+}
+
+@font-face {
+	font-family: halo-outline;
+	src: url(/static/fonts/halo-outline.ttf);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: black;
+	color: ghostwhite;
+}
+
+h1 {
+	font-family: halo;
+}

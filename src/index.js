@@ -34,7 +34,7 @@ server.listen(config.PORT, () => {
 	console.log(
 		"\nlistening on port %s at %s starting at %s UTC time",
 		config.PORT,
-		config.DOMAIN,
+		config.hrefs(),
 		new Date().toLocaleString()
 	);
 });

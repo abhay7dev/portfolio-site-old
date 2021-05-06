@@ -1,12 +1,14 @@
 import { serverSettings } from "../config.js";
 
+const { hrefs } = serverSettings;
+
 const cspHeaders = `
 	upgrade-insecure-requests;
 	default-src 'self';
 	style-src 'none';
-	style-src-elem ${serverSettings.HREF}/static/styles/ https://fonts.googleapis.com/css2;
+	style-src-elem ${hrefs("/static/styles/")} https://fonts.googleapis.com/css2;
 	style-src-attr 'none';
-	font-src https://fonts.gstatic.com;
+	font-src ${hrefs("/static/fonts/")} https://fonts.gstatic.com;
 	child-src 'none';
 	connect-src *;
 	frame-src 'none';
@@ -17,7 +19,7 @@ const cspHeaders = `
 	object-src 'none';
 	prefetch-src 'none';
 	script-src 'none';
-	script-src-elem ${serverSettings.HREF}/static/scripts/;
+	script-src-elem ${hrefs("/static/scripts/")};
 	script-src-attr 'none';
 	worker-src 'none';
 	navigate-to 'self';

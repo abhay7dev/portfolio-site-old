@@ -2,22 +2,6 @@ const { env } = process;
 
 export const home = new URL("./", import.meta.url).pathname;
 
-export const serverSettings = {
-	REPL_SLUG: env.REPL_SLUG,
-	REPL_OWNER: env.REPL_OWNER,
-	PORT: env.PORT || 5050,
-	HREF: `https://${
-		env.REPL_SLUG == env.REPL_OWNER
-			? `${env.REPL_OWNER}.repl.co`
-			: `${env.REPL_SLUG}.${env.REPL_OWNER}.repl.co`
-	}`,
-	DOMAIN: `${
-		env.REPL_SLUG == env.REPL_OWNER
-			? `${env.REPL_SLUG}.repl.co`
-			: `${env.REPL_SLUG}.${env.OWNER}.repl.co`
-	}`,
-};
-
 export const errors = {
 	403: {
 		errorType: "403 Forbidden",
@@ -38,3 +22,32 @@ export const errors = {
 			"The server could not handle the request which caused an error in returning the resource",
 	},
 };
+
+class ServerSettings {
+	constructor() {
+		this.REPL_SLUG = env.REPL_SLUG;
+		this.REPL_OWNER = env.REPL_OWNER;
+		this.PORT = env.PORT || 5050;
+		this.DOMAINS = ["abhay7.is-a.dev", "EpicGamer007.repl.co", "26ece53e-5ca7-40d2-a7ad-cc13eb22808d.id.repl.co"];
+		this.hrefs = (add = "") => {
+			let str = "";
+
+			for(let i = 0; i < this.DOMAINS.length - 1; i++) {
+				str += `https://${this.DOMAINS[i]}${add} `;
+			}
+			str += `https://${this.DOMAINS[this.DOMAINS.length - 1]}${add}`;
+			
+			return str;
+		}
+		this.domains = (add = "") => {
+			let str = "";
+			for(let i = 0; i < this.DOMAINS.length - 1; i++) {
+				str += `${this.DOMAINS[i]}${add} `;
+			}
+			str += `${this.DOMAINS[this.DOMAINS.length - 1]}${add}`;
+			return str;
+		}
+	}
+}
+
+export const serverSettings = new ServerSettings();
