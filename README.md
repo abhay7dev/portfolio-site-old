@@ -1,6 +1,6 @@
-# Hi there 👋
-
 (If you are looking for my portfolio site README, its at https://github.com/EpicGamer007/EpicGamer007/blob/master/site.md)
+
+# Hi there 👋
 
 <p align="center"><img src="https://komarev.com/ghpvc/?username=EpicGamer007" alt="EpicGamer007"/></p>
 
