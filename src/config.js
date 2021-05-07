@@ -28,25 +28,29 @@ class ServerSettings {
 		this.REPL_SLUG = env.REPL_SLUG;
 		this.REPL_OWNER = env.REPL_OWNER;
 		this.PORT = env.PORT || 5050;
-		this.DOMAINS = ["abhay7.is-a.dev", "EpicGamer007.repl.co", "26ece53e-5ca7-40d2-a7ad-cc13eb22808d.id.repl.co"];
+		this.DOMAINS = [
+			"abhay7.is-a.dev",
+			"EpicGamer007.repl.co",
+			"26ece53e-5ca7-40d2-a7ad-cc13eb22808d.id.repl.co",
+		];
 		this.hrefs = (add = "") => {
 			let str = "";
 
-			for(let i = 0; i < this.DOMAINS.length - 1; i++) {
+			for (let i = 0; i < this.DOMAINS.length - 1; i++) {
 				str += `https://${this.DOMAINS[i]}${add} `;
 			}
 			str += `https://${this.DOMAINS[this.DOMAINS.length - 1]}${add}`;
-			
+
 			return str;
-		}
+		};
 		this.domains = (add = "") => {
 			let str = "";
-			for(let i = 0; i < this.DOMAINS.length - 1; i++) {
+			for (let i = 0; i < this.DOMAINS.length - 1; i++) {
 				str += `${this.DOMAINS[i]}${add} `;
 			}
 			str += `${this.DOMAINS[this.DOMAINS.length - 1]}${add}`;
 			return str;
-		}
+		};
 	}
 }
 
