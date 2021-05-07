@@ -23,7 +23,7 @@ export const errors = {
 	},
 };
 
-class ServerSettings {
+export const serverSettings = new (class ServerSettings {
 	constructor() {
 		this.REPL_SLUG = env.REPL_SLUG;
 		this.REPL_OWNER = env.REPL_OWNER;
@@ -52,6 +52,4 @@ class ServerSettings {
 			return str;
 		};
 	}
-}
-
-export const serverSettings = new ServerSettings();
+})();
