@@ -8,16 +8,43 @@
 	src: url(/static/fonts/halo-outline.ttf);
 }
 
-* {
+/* width */
+::-webkit-scrollbar {
+	width: 1vh;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	background-color: rgb(10, 0, 36);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background: rgba(40, 0, 175, 0.2);
+	transition: background 500ms;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: rgb(25, 5, 100);
+}
+
+body,
+html {
 	margin: 0;
 	padding: 0;
-}
-
-body {
-	background-color: black;
 	color: ghostwhite;
+	height: 100%;
+	background-color: black;
+	background: linear-gradient(45deg, rgba(0, 0, 0, 0.3), rgba(1, 10, 60, 0.3)),
+		url(/static/images/bg.jpg) no-repeat center center fixed;
+	background-size: cover;
 }
 
-h1 {
-	font-family: halo;
+#name {
+	text-align: center;
+	font-family: halo-outline;
+	font-size: 7rem;
 }

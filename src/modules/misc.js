@@ -14,7 +14,7 @@ const cspHeaders = `
 	frame-src 'none';
 	manifest-src 'self';
 	frame-ancestors 'none';
-	img-src *;
+	img-src 'self';
 	media-src 'none';
 	object-src 'none';
 	prefetch-src 'none';
@@ -37,7 +37,9 @@ export function data(req, res, next) {
 	res.removeHeader("X-Frame-Options");
 	res.removeHeader("x-frame-options");
 
-	res.data = {};
+	res.data = {
+		path: req.path,
+	};
 
 	next();
 }

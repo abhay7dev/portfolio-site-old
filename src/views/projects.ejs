@@ -1,5 +1,10 @@
-<% data.projects.forEach(pro => {%>
-	<%- include("./components/project-thumbnail", { data: pro }) %>
-<% }) %>
+<section class="cards">
+	<% data.projects.forEach(pro => {%>
+		<article class="card">
+			<a href="<%=pro.link%>"><%=pro.name%></a>
+			<p><%=pro.description%></p>
+		</article>
+	<% }) %>
+</section>
 <%- contentFor("title") %>
 My Projects
