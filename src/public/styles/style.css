@@ -43,8 +43,28 @@ html {
 	background-size: cover;
 }
 
+a {
+	color: ghostwhite;
+	text-decoration: none;
+	transition: text-decoration 1s;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
 #name {
 	text-align: center;
 	font-family: halo-outline;
 	font-size: 7rem;
+}
+
+#error {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	text-align: center;
+}
+
+
+.temp {
+	text-align: center;
 }
