@@ -7,7 +7,7 @@
 	"scripts": {
 		"start": "node src",
 		"dev": "node --abort-on-uncaught-exception --throw-deprecation --trace-warnings --unhandled-rejections=strict src",
-		"prettier": "npx prettier --write --use-tabs --tab-width 4 src"
+		"prettier": "printf \"npx prettier --write --use-tabs --tab-width 4 src\n(Not running)\n\""
 	},
 	"repository": {
 		"type": "git",
@@ -27,9 +27,7 @@
 		"express-rate-limit": "^5.2.6",
 		"helmet": "^4.6.0"
 	},
-	"devDependencies": {
-		"prettier": "^2.2.1"
-	},
+	"devDependencies": {},
 	"bugs": {
 		"url": "https://github.com/EpicGamer007/EpicGamer007/issues"
 	},
