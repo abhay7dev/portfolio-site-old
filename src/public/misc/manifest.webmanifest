@@ -1,0 +1,38 @@
+{
+	"background_color": "black",
+	"categories": [
+		"portfolio",
+		"abhay",
+		"personal",
+		"blog",
+		"programming",
+		"coding",
+		"nodejs"
+	],
+	"description": "Abhay's personal website",
+	"dir": "ltr",
+	"display": "fullscreen",
+	"icons": [
+		{
+			"src": "/favicon.ico",
+			"sizes": "16x16",
+			"type": "image/x-icon",
+			"purpose": "any"
+		},
+		{
+			"src": "/static/images/large.png",
+			"sizes": "150x150",
+			"type": "image/png",
+			"purpose": "any"
+		}
+	],
+	"lang": "en-US",
+	"name": "Abhay",
+	"orientation": "landscape",
+	"prefer_related_applications": false,
+	"related_applications": [],
+	"scope": "/",
+	"short_name": "Abhay",
+	"start_url": "/",
+	"theme_color": "black"
+}

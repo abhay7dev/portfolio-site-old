@@ -21,7 +21,7 @@ const cspHeaders = `
 	script-src 'none';
 	script-src-elem ${hrefs("/static/scripts/")};
 	script-src-attr 'none';
-	worker-src 'none';
+	worker-src ${hrefs("/static/scripts/")}';
 	navigate-to 'self';
 	`.replace(/\s/g, " ");
 
