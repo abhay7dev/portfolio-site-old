@@ -12,20 +12,7 @@
 	"description": "Abhay's personal website",
 	"dir": "ltr",
 	"display": "fullscreen",
-	"icons": [
-		{
-			"src": "/favicon.ico",
-			"sizes": "16x16",
-			"type": "image/x-icon",
-			"purpose": "any"
-		},
-		{
-			"src": "/static/images/large.png",
-			"sizes": "150x150",
-			"type": "image/png",
-			"purpose": "any"
-		}
-	],
+	"icons": [],
 	"lang": "en-US",
 	"name": "Abhay",
 	"orientation": "landscape",
