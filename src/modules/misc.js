@@ -6,9 +6,9 @@ const cspHeaders = `
 	upgrade-insecure-requests;
 	default-src 'self';
 	style-src 'none';
-	style-src-elem ${hrefs("/static/styles/")} https://fonts.googleapis.com/css2;
+	style-src-elem ${hrefs("/static/styles/")};
 	style-src-attr 'none';
-	font-src ${hrefs("/static/fonts/")} https://fonts.gstatic.com;
+	font-src ${hrefs("/static/fonts/")};
 	child-src 'none';
 	connect-src *;
 	frame-src 'none';
