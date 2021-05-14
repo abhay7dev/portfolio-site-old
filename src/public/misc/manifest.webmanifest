@@ -56,7 +56,7 @@
 	],
 	"lang": "en-US",
 	"name": "Abhay",
-	"orientation": "landscape",
+	"orientation": "any",
 	"prefer_related_applications": false,
 	"related_applications": [],
 	"scope": "/",

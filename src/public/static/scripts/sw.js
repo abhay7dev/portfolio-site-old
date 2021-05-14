@@ -3,7 +3,7 @@ self.addEventListener("install", (installEvent) => {
 });
 
 self.addEventListener("fetch", (fetchEvent) => {
-	console.log(`Fetch called at ${fetchEvent.timeStamp}`);
+	console.log(`Fetch called`);
 	fetch(fetchEvent.request).then((response) => {
 		console.log(`Sent request to ${response.url} and got response ${response.body}`);
 	});
