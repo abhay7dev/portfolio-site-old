@@ -1,9 +1,14 @@
 import express from "express";
 const router = express.Router();
-import { home } from "../../config.js";
+import { home, serverSettings as config } from "../../config.js";
 import { join } from "path";
 
+import { readdir } from "fs";
+
 router.use((req, res, next) => {
+	if(req.hostname.toLowerCase() !== config.MAIN_DOMAIN.toLowerCase()) {
+		return res.redirect(`${config.MAIN_HREF}/${req.path}`);
+	}
 	res.removeHeader("X-Powered-By");
 	res.removeHeader("X-Frame-Options");
 	res.removeHeader("Content-Security-Policy");
@@ -26,5 +31,12 @@ router.use(
 		etag: false,
 	})
 );
+
+router.get("/allfiles", (req, res) => {
+	readdir(join(home, "public", "misc"), (err, files) => {
+		if(err) return res.json({message: `Error reading files: ${err}`});
+		return res.json({ files });
+	});
+});
 
 export default router;

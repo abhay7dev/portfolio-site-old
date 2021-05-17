@@ -6,10 +6,19 @@
 <meta name="msapplication-TileColor" content="#22467a">
 <meta name="theme-color" content="#142134">
 <%- meta %>
+<% if(data.hostname.toLowerCase() !== data.mainDomain.toLowerCase()) { %>
+	<meta http-equiv="refresh" content="0; URL=<%=data.mainHref%>">
+	<title>Redirecting to main site</title>
+<% } else {%>
+	<title><%= title %></title>
+<% } %>
 
-<title><%= title %></title>
+<link rel="canonical" href="<%=data.mainHref%>">
 
-<link rel="stylesheet" href="/static/styles/style.css">
+<% if(!data.removeStyle) { %>
+	<link rel="stylesheet" href="/static/styles/style.css">
+<% } %>
+<%- style %>
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">

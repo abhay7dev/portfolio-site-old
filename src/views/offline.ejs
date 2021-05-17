@@ -1,0 +1,31 @@
+<h1>You are not online, please be online in order to use this webapp</h1>
+<button id="reload">Reload page</button>
+
+<script type="module">
+	
+	document.querySelector("#reload").addEventListener("click", () => {
+		window.location.reload();
+	});
+
+	window.addEventListener('online', () => {
+		window.location.reload();
+	});
+
+</script>
+
+<style>
+
+	body {
+		background-color: black;
+		color: ghostwhite;
+	}
+
+	main {
+		text-align: center;
+		font-family: Arial Verdana sans-serif;
+	}
+
+</style>
+
+<%- contentFor('title') %>
+Offline

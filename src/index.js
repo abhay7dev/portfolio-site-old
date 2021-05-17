@@ -16,10 +16,19 @@ app.set("view engine", "ejs");
 app.set("views", join(home, "views"));
 app.set("layout extractScripts", true);
 app.set("layout extractMetas", true);
+app.set("layout extractStyles", true);
 
 app.use(helmet({ xssFilter: false }));
-
 app.use(layouts);
+
+app.use((req, res, next) => {
+	// console.log(`Requested: ${req.hostname.toLowerCase()}\nMAIN_DOMAIN: ${config.MAIN_DOMAIN.toLowerCase()}`);
+	if(req.hostname.toLowerCase() !== config.MAIN_DOMAIN.toLowerCase()) {
+		return res.redirect(`${config.MAIN_HREF}/${req.path}`);
+	}
+	return next();
+});
+
 app.use(routers.staticRouter);
 app.use(routers.clientRouter);
 

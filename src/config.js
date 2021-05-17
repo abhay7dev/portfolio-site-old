@@ -33,23 +33,49 @@ export const serverSettings = new (class {
 			"EpicGamer007.repl.co",
 			"26ece53e-5ca7-40d2-a7ad-cc13eb22808d.id.repl.co",
 		];
-		this.hrefs = (add = "") => {
-			let str = "";
+		this.MAIN_DOMAIN = this.DOMAINS[0];
+		this.MAIN_HREF = `https://${this.DOMAINS[0]}`;
+		this.noStyles = ["/offline"];
+		this.inlineAllowed = ["/offline"];
+		this.hrefs = (add = "", str = true) => {
+			if(str) {
+				let str = "";
 
-			for (let i = 0; i < this.DOMAINS.length - 1; i++) {
-				str += `https://${this.DOMAINS[i]}${add} `;
+				for (let i = 0; i < this.DOMAINS.length - 1; i++) {
+					str += `https://${this.DOMAINS[i]}${add} `;
+				}
+				str += `https://${this.DOMAINS[this.DOMAINS.length - 1]}${add}`;
+
+				return str;
+			} else {
+				const arr = [];
+
+				for (let i = 0; i < this.DOMAINS.length; i++) {
+					arr.push(`https://${this.DOMAINS[i]}${add}`);
+				}
+
+				return arr;
 			}
-			str += `https://${this.DOMAINS[this.DOMAINS.length - 1]}${add}`;
-
-			return str;
 		};
-		this.domains = (add = "") => {
-			let str = "";
-			for (let i = 0; i < this.DOMAINS.length - 1; i++) {
-				str += `${this.DOMAINS[i]}${add} `;
+		this.domains = (add = "", str = true) => {
+			if(str) {
+				let str = "";
+
+				for (let i = 0; i < this.DOMAINS.length - 1; i++) {
+					str += `${this.DOMAINS[i]}${add} `;
+				}
+				str += `${this.DOMAINS[this.DOMAINS.length - 1]}${add}`;
+
+				return str;
+			} else {
+				const arr = [];
+
+				for (let i = 0; i < this.DOMAINS.length; i++) {
+					arr.push(`${this.DOMAINS[i]}${add}`);
+				}
+
+				return arr;
 			}
-			str += `${this.DOMAINS[this.DOMAINS.length - 1]}${add}`;
-			return str;
 		};
 	}
 })();

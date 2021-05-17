@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://komarev.com/ghpvc/?username=EpicGamer007" alt="EpicGamer007"/></p>
 
-- 🔭 I’m currently working on Snake in C++, a dev.to clone with nodejs, my portfolio site with nodejs,an algorithms comparer in C++, and a game with ThreeJS.
+- 🔭 I’m currently working on a dev.to clone with nodejs, my portfolio site with nodejs, an algorithms comparer in C++, and a game with ThreeJS.
 - 🌱 I’m currently learning C++
 - 👯 I’m looking to collaborate on NodeJS and Java projects
 - 🤔 I’m looking for help with C++

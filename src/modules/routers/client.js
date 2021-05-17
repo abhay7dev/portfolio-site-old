@@ -18,6 +18,12 @@ router.get("/", (req, res) => {
 	});
 });
 
+router.get("/offline", (req, res) => {
+	res.render("offline", {
+		data: res.data
+	});
+});
+
 router.get("/projects", (req, res) => {
 	res.data.projects = [
 		{
