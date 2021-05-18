@@ -1,7 +1,7 @@
 import { serverSettings } from "../config.js";
 const { hrefs, MAIN_DOMAIN, MAIN_HREF } = serverSettings;
 
-import CSP from "./csp.js";
+import CSP from "./data/csp.js";
 const csp = new CSP();
 
 export function data(req, res, next) {

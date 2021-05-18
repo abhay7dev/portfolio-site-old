@@ -4,12 +4,29 @@ const router = express.Router();
 import { home, errors } from "../../../../config.js";
 import { join } from "path";
 
-import { readdir } from "fs";
+import readdir from "../../../data/files.js";
 
-router.get("/rootfiles", (req, res) => {
-	readdir(join(home, "public", "misc"), (err, files) => {
-		if(err) return res.json({message: `Error reading files: ${err}`});
-		res.json(files);
+router.get("/root-files", (req, res) => {
+	readdir(join(home, "public", "misc")).then(resp => {
+		for(let i = 0; i < resp.length; i++) {
+			resp[i] = resp[i].substring(resp[i].indexOf("misc") + "misc".length, resp[i].length);
+		}
+		res.json(resp);
+	}).catch(err => {
+		console.log(err);
+		res.json({error: err});
+	});
+
+});
+
+router.get("/asset-files", (req, res) => {
+	readdir(join(home, "public", "static")).then(resp => {
+		for(let i = 0; i < resp.length; i++) {
+			resp[i] = resp[i].substring(resp[i].indexOf("public") + "public".length, resp[i].length);
+		}
+		res.json(resp);
+	}).catch(err => {
+		res.json({error: err});
 	});
 });
 
@@ -20,7 +37,7 @@ router.use((req, res, next) => {
 	) {
 		next();
 	} else {
-		data.error = errors[403];
+		res.data.error = errors[403];
 		res.render("error", {
 			data
 		});

@@ -25,6 +25,7 @@
 		"express": "^4.17.1",
 		"express-ejs-layouts": "^2.5.0",
 		"express-rate-limit": "^5.2.6",
+		"glob": "^7.1.7",
 		"helmet": "^4.6.0"
 	},
 	"devDependencies": {},

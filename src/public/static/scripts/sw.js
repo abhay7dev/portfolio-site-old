@@ -4,7 +4,7 @@ const OFFLINE_VERSION = 1;
 const CACHE_NAME = "offline";
 
 const OFFLINE_URL = "/offline";
-const ROOT_RESOURCES_LIST_URL = "/api/v1/rootfiles";
+const ROOT_RESOURCES_LIST_URL = "/api/v1/root-files";
 
 self.addEventListener("install", (event) => {
 	event.waitUntil((async () => {
@@ -16,14 +16,23 @@ self.addEventListener("install", (event) => {
 				console.log("Error caching offline page. ", err);
 			}
 			try {
-				const files = await ((await fetch(ROOT_RESOURCES_LIST_URL)).json());
-				console.log("Recieved files list: ");
-				files.forEach(file => {
-					cache.add(`/${file}`);
+				const rootFiles = await ((await fetch(ROOT_RESOURCES_LIST_URL)).json());
+				console.log("Recieved root files list: ");
+				rootFiles.forEach(file => {
+					cache.add(file);
 				});
 			} catch(err) {
 				console.log("Error caching root assets. ", err);
 			}
+			/* try {
+				const assetFiles = await ((await fetch(ASSET_RESOURCES_LIST_URL)).json());
+				console.log("Recieved asset files list: ");
+				assetFiles.forEach(file => {
+					cache.add(file);
+				});
+			} catch(err) {
+				console.log("Error caching root assets. ", err);
+			} */
 		} else {
 			console.log("Cache not initialized. No caching to occur");
 		}
@@ -42,7 +51,7 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
 	if (event.request.mode === "navigate") {
-		return event.respondWith((async () => {
+		event.respondWith((async () => {
 			try {
 				const preloadResponse = await event.preloadResponse;
 				if (preloadResponse) {
@@ -59,22 +68,23 @@ self.addEventListener("fetch", (event) => {
 				return cachedResponse || "Error";
 			}
 		})());
-	}
-	return event.respondWith((async () => {
-		try {
-			const cache = await caches.open(CACHE_NAME);
-			const cachedResponse = await cache.match(event.request);
-			if(cachedResponse) return cachedResponse;
+	} else {
+		event.respondWith((async () => {
+			try {
+				const cache = await caches.open(CACHE_NAME);
+				const cachedResponse = await cache.match(event.request);
+				if(cachedResponse) return cachedResponse;
 
-			if (event.request.cache === 'only-if-cached' && event.request.mode !== 'same-origin') {
-				return;
+				if (event.request.cache === 'only-if-cached' && event.request.mode !== 'same-origin') {
+					return;
+				}
+				
+				return fetch(event.request);
+
+			} catch(err) {
+				console.log(`Error fetching resource ${event.request}. `, err);
+				return err;
 			}
-			
-			return fetch(event.request);
-
-		} catch(err) {
-			console.log(`Error fetching resource ${event.request}. `, err);
-			return err;
-		}
-	})());
+		})());
+	}
 });
