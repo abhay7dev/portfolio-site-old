@@ -38,8 +38,8 @@ export function data(req, res, next) {
 	};
 
 	if(serverSettings.inlineAllowed.indexOf(req.path) !== -1) {
-		rawCSP["style-src-elem"].push("sha256-T6S3HvoS/88a5vDvysxQr4kumGeyZ+Ia2ZIYKdW5JX4=");
-		rawCSP["script-src-elem"].push("sha256-oC4P6m6M27ydSg8/N2A2UgKNTJQZk+fyWcoeQx3YfDw=");
+		rawCSP["style-src-elem"].push("unsafe-inline");
+		rawCSP["script-src-elem"].push("unsafe-inline");
 	}
 
 	csp.load(rawCSP);

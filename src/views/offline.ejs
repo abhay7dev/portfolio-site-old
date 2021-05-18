@@ -2,12 +2,18 @@
 <button id="reload">Reload page</button>
 
 <script type="module">
-	
+
 	document.querySelector("#reload").addEventListener("click", () => {
-		window.location.reload();
+		if(window.location.pathname.toLowerCase() === "/offline") {
+			return window.location.pathname = "/";
+		}
+		return window.location.reload();
 	});
 
 	window.addEventListener('online', () => {
+		if(window.location.pathname.toLowerCase() === "/offline") {
+			return window.location.pathname = "/";
+		}
 		window.location.reload();
 	});
 

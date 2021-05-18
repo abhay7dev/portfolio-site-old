@@ -3,8 +3,6 @@ const router = express.Router();
 import { home, serverSettings as config } from "../../config.js";
 import { join } from "path";
 
-import { readdir } from "fs";
-
 router.use((req, res, next) => {
 	if(req.hostname.toLowerCase() !== config.MAIN_DOMAIN.toLowerCase()) {
 		return res.redirect(`${config.MAIN_HREF}/${req.path}`);
@@ -31,12 +29,5 @@ router.use(
 		etag: false,
 	})
 );
-
-router.get("/allfiles", (req, res) => {
-	readdir(join(home, "public", "misc"), (err, files) => {
-		if(err) return res.json({message: `Error reading files: ${err}`});
-		return res.json({ files });
-	});
-});
 
 export default router;

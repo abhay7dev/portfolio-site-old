@@ -45,12 +45,13 @@
 		},
 		{
 			"src": "/favicon.ico",
-			"sizes": "32x32",
+			"sizes": "48x48",
 			"type": "image/x-icon",
 			"purpose": "any"
 		},
 		{
 			"src": "/safari-pinned-tab.svg",
+			"sizes": "1113x1113",
 			"purpose": "monochrome"
 		}
 	],

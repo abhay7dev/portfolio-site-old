@@ -31,6 +31,7 @@ app.use((req, res, next) => {
 
 app.use(routers.staticRouter);
 app.use(routers.clientRouter);
+app.use("/api/v1/", routers.apis.v1);
 
 app.use((req, res) => {
 	res.data.error = errors[404];
