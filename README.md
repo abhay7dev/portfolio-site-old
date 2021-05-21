@@ -19,7 +19,7 @@
 
 <summary>
 
-## Here are my repl.it stats
+## Here are my replit stats
 
 </summary>
 
