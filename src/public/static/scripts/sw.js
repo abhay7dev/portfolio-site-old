@@ -5,6 +5,7 @@ const CACHE_NAME = "offline";
 
 const OFFLINE_URL = "/offline";
 const ROOT_RESOURCES_LIST_URL = "/api/v1/root-files";
+const ASSET_RESOURCES_LIST_URL = "/api/v1/asset-files";
 
 self.addEventListener("install", (event) => {
 	event.waitUntil((async () => {
@@ -24,15 +25,15 @@ self.addEventListener("install", (event) => {
 			} catch(err) {
 				console.log("Error caching root assets. ", err);
 			}
-			/* try {
+			try {
 				const assetFiles = await ((await fetch(ASSET_RESOURCES_LIST_URL)).json());
 				console.log("Recieved asset files list: ");
 				assetFiles.forEach(file => {
-					cache.add(file);
+					if(file.toLowerCase().includes("fonts") || file.toLowerCase().includes("images")) cache.add(file);
 				});
 			} catch(err) {
 				console.log("Error caching root assets. ", err);
-			} */
+			}
 		} else {
 			console.log("Cache not initialized. No caching to occur");
 		}
@@ -61,7 +62,8 @@ self.addEventListener("fetch", (event) => {
 				const networkResponse = await fetch(event.request);
 				return networkResponse;
 			} catch (error) {
-				console.log("Fetch failed; returning offline page instead.", error);
+				console.log(event);
+				console.log(`Fetch failed; returning offline page instead.`, error);
 
 				const cache = await caches.open(CACHE_NAME);
 				const cachedResponse = await cache.match(OFFLINE_URL);
