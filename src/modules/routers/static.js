@@ -19,15 +19,11 @@ router.use((req, res, next) => {
 
 router.use(
 	"/static/",
-	express.static(join(home, "public", "static"), {
-		etag: false,
-	})
+	express.static(join(home, "public", "static"))
 );
 
 router.use(
-	express.static(join(home, "public", "misc"), {
-		etag: false,
-	})
+	express.static(join(home, "public", "misc"))
 );
 
 export default router;
