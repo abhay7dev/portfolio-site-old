@@ -16,7 +16,7 @@ export function data(req, res, next) {
 
 	const rawCSP = {
 		"upgrade-insecure-requests": [""],
-		"default-src": ["self"],
+		"default-src": ["none"],
 		"style-src": ["none"],
 		"style-src-elem": hrefs("/static/styles/", false),
 		"style-src-attr": ["none"],
@@ -34,7 +34,9 @@ export function data(req, res, next) {
 		"script-src-elem": hrefs("/static/scripts/", false),
 		"script-src-attr": ["none"],
 		"worker-src": hrefs("/static/scripts/", false),
-		"navigate-to": ["self"]
+		"navigate-to": ["self"],
+		"form-action": hrefs("/api/", false),
+		"base-uri": ["self"]
 	};
 
 	if(serverSettings.inlineAllowed.indexOf(req.path) !== -1) {
