@@ -10,7 +10,6 @@ Abhay's (EpicGamer007) portfolio site.
 
 * [`ExpressJS`](https://expressjs.com/)
 * [`EJS`](https://ejs.co/)
-<!-- * [`ReplAuth`](https://replit.com/auth_with_repl_site) -->
 * [`Express Rate Limit`](https://www.npmjs.com/package/express-rate-limit)
 * [`Express EJS Layouts`](https://www.npmjs.com/package/express-ejs-layouts)
 * [`Helmet`](https://helmetjs.github.io/)
