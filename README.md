@@ -1,49 +1,20 @@
-(If you are looking for my portfolio site README, its at https://github.com/EpicGamer007/EpicGamer007/blob/master/site.md)
+# Abhay's portfolio site
 
-# Hi there 👋
+Abhay's (EpicGamer007) portfolio site.
 
-<p align="center"><img src="https://komarev.com/ghpvc/?username=EpicGamer007" alt="EpicGamer007"/></p>
+## Developers
 
-- 🔭 I’m currently working on a dev.to clone with nodejs, my portfolio site with nodejs, an algorithms comparer in C++, and a game with ThreeJS.
-- 🌱 I’m currently learning C++
-- 👯 I’m looking to collaborate on NodeJS and Java projects
-- 🤔 I’m looking for help with C++
-- 📫 How to reach me: Discord: EpicGamer007#5702
-- 😄 Pronouns: He, him
-- ⚡ Fun fact: Fun Fact
+* [EpicGamer007](https://github.com/EpicGamer007)
 
-## Here is a random programming joke
-![Jokes Card](https://readme-jokes.vercel.app/api)
+## Made with:
 
-<details>
+* [`ExpressJS`](https://expressjs.com/)
+* [`EJS`](https://ejs.co/)
+<!-- * [`ReplAuth`](https://replit.com/auth_with_repl_site) -->
+* [`Express Rate Limit`](https://www.npmjs.com/package/express-rate-limit)
+* [`Express EJS Layouts`](https://www.npmjs.com/package/express-ejs-layouts)
+* [`Helmet`](https://helmetjs.github.io/)
 
-<summary>
+## License
 
-## Here are my replit stats
-
-</summary>
-
-<img src="https://replstatswidget.19wintersp.repl.co/?name=EpicGamer007&type=minimal-tiles&theme=dark&foreground=#f8f8ff&border=#f8f8ff.png" alt="My replit information"/>
-<img src="https://replstatswidget.19wintersp.repl.co/?name=EpicGamer007&type=languages&theme=dark&foreground=#f8f8ff&border=#f8f8ff.png" alt="My Top languages on replit"/>
-
-(Currently broken due to problems with api. For more info, view comments at https://replit.com/@19wintersp/ReplStatsWidget)
-
-</details>
-
-<details>
-
-<summary>
-
-## Here are my github stats
-
-</summary>
-
-![Abhay's GitHub stats](https://github-readme-stats.vercel.app/api?username=EpicGamer007&theme=dark)
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=EpicGamer007&theme=dark)
-![Trophies](https://github-profile-trophy.vercel.app/?username=EpicGamer007&theme=dracula)
-
-</details>
-
-I have a [replit](https://replit.com) account too. My profile is [here](https://replit.com/@EpicGamer007).
-
-I have a https://binarysearch.com. My account is [here](https://binarysearch.com/@/EpicGamer007)
+This project and all derivatives are licensed under the terms of the GNU Affero General Public License, the terms of which are visible in the LICENSE file. You should have received a copy of the AGPL, or you may access it at https://www.gnu.org/licenses/agpl-3.0.en.html.
