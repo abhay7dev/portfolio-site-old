@@ -1,36 +1,38 @@
 // https://web.dev/offline-fallback-page/
 
-const OFFLINE_VERSION = 1;
 const CACHE_NAME = "offline";
 
-const OFFLINE_URL = "/offline";
-const ROOT_RESOURCES_LIST_URL = "/api/v1/root-files";
-const ASSET_RESOURCES_LIST_URL = "/api/v1/asset-files";
+const OFFLINE_URL = "/static/offline/offline.html";
+const OFFLINE_ASSETS = ["/static/images/bg.jpg", "/static/fonts/halo-outline.ttf", "/favicon.ico", "/android-chrome-192x192.png", "/android-chrome-512x512.png", "/apple-touch-icon.png", "/favicon-16x16.png", "/favicon-32x32.png", "/manifest.webmanifest", "/mstile-150x150.png", "/safari-pinned-tab.svg"];
+
+console.group("%cASSET URLS", "color: red; font-size: 30px;");
+console.table({CACHE_NAME, OFFLINE_URL, OFFLINE_ASSETS});
+console.groupEnd();
 
 self.addEventListener("install", (event) => {
+	console.log("%cInstall event called", "color: green;");
 	event.waitUntil((async () => {
 		const cache = await caches.open(CACHE_NAME);
 		if(cache) {
 			try {
-				await cache.add(new Request(OFFLINE_URL, { cache: "reload" }));
+				await cache.add(new Request(
+					OFFLINE_URL, {
+						cache: "reload"
+					}
+				));
+				console.log("Cached offline page");
 			} catch(err) {
-				console.log("Error caching offline page. ", err);
+				console.log("Error caching offline page: ", err);
 			}
 			try {
-				const rootFiles = await ((await fetch(ROOT_RESOURCES_LIST_URL)).json());
-				console.log("Recieved root files list: ");
-				rootFiles.forEach(file => {
-					cache.add(file);
+				OFFLINE_ASSETS.forEach(async (file) => {
+					await cache.add(new Request(
+						file, {
+							cache: "default"
+						}
+					));
 				});
-			} catch(err) {
-				console.log("Error caching root assets. ", err);
-			}
-			try {
-				const assetFiles = await ((await fetch(ASSET_RESOURCES_LIST_URL)).json());
-				console.log("Recieved asset files list: ");
-				assetFiles.forEach(file => {
-					if(file.toLowerCase().includes("fonts") || file.toLowerCase().includes("images")) cache.add(file);
-				});
+				console.log("Cached OFFLINE_ASSETS")
 			} catch(err) {
 				console.log("Error caching root assets. ", err);
 			}
@@ -38,10 +40,11 @@ self.addEventListener("install", (event) => {
 			console.log("Cache not initialized. No caching to occur");
 		}
 	})());
-	self.skipWaiting();
+	// self.skipWaiting();
 });
 
 self.addEventListener("activate", (event) => {
+	console.log("service worker activated");
 	event.waitUntil((async () => {
 		if ("navigationPreload" in self.registration) {
 			await self.registration.navigationPreload.enable();
@@ -51,6 +54,7 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
+	console.log("%cFetch called", "color: yellow;");
 	if (event.request.mode === "navigate") {
 		event.respondWith((async () => {
 			try {
@@ -65,9 +69,23 @@ self.addEventListener("fetch", (event) => {
 				console.log(event);
 				console.log(`Fetch failed; returning offline page instead.`, error);
 
-				const cache = await caches.open(CACHE_NAME);
-				const cachedResponse = await cache.match(OFFLINE_URL);
-				return cachedResponse || "Error";
+				try {
+
+					const cache = await caches.open(CACHE_NAME);
+					const cachedResponse = await cache.match(OFFLINE_URL);
+					console.log(cachedResponse);
+					if(cachedResponse == undefined) {
+						console.log("Request is undefined");
+						console.warn("Error opening cache or getting offline page.");
+						
+						return (await fetch(OFFLINE_URL));
+					}
+					return cachedResponse;
+
+				} catch(err) {
+					console.warn("Error opening cache or getting offline page.");
+					return "You are offline";
+				}
 			}
 		})());
 	} else {

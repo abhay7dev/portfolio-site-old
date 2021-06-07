@@ -35,8 +35,6 @@ export const serverSettings = new (class {
 		];
 		this.MAIN_DOMAIN = this.DOMAINS[0];
 		this.MAIN_HREF = `https://${this.DOMAINS[0]}`;
-		this.noStyles = ["/offline"];
-		this.inlineAllowed = ["/offline"];
 		this.hrefs = (add = "", str = true) => {
 			if(str) {
 				let str = "";

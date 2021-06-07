@@ -9,12 +9,12 @@ export function data(req, res, next) {
 	res.data = {
 		path: req.path,
 		hostname: req.hostname,
-		mainDomain: MAIN_DOMAIN,
 		mainHref: MAIN_HREF,
-		removeStyle: (serverSettings.noStyles.indexOf(req.path) !== -1 ? true : false)
+		fullUrl: `https://${req.headers.host}${req.originalUrl}`,
+		fullUrlNoQuery: `https://${req.headers.host}${req.baseUrl}${req.path}`
 	};
 
-	const rawCSP = {
+	const raw = {
 		"upgrade-insecure-requests": [""],
 		"default-src": ["none"],
 		"style-src": ["none"],
@@ -39,18 +39,13 @@ export function data(req, res, next) {
 		"base-uri": ["self"]
 	};
 
-	if(serverSettings.inlineAllowed.indexOf(req.path) !== -1) {
-		rawCSP["style-src-elem"].push("unsafe-inline");
-		rawCSP["script-src-elem"].push("unsafe-inline");
-	}
-
-	csp.load(rawCSP);
+	csp.load(raw);
 
 	res.set({
 		"Content-Security-Policy": csp.share("string"),
 		"x-content-type-options": "nosniff",
-		"Content-type": "text/html; charset=UTF-8",
-		"Cache-Control": "no-store, max-age=0",
+		"Content-Type": "text/html; charset=UTF-8",
+		"Cache-Control": "no-cache",
 	});
 
 	res.removeHeader("X-Powered-By");

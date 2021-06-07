@@ -18,12 +18,6 @@ router.get("/", (req, res) => {
 	});
 });
 
-router.get("/offline", (req, res) => {
-	res.render("offline", {
-		data: res.data
-	});
-});
-
 router.get("/projects", (req, res) => {
 	res.data.projects = [
 		{
@@ -60,14 +54,6 @@ router.get("/projects", (req, res) => {
 	res.render("projects", {
 		data: res.data,
 	});
-});
-
-router.get("/blog", (req, res) => {
-	res.send("blogs");
-});
-
-router.get("/blog/:id", (req, res) => {
-	res.send(req.params.id);
 });
 
 router.get("/contact", (req, res) => {

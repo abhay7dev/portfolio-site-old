@@ -1,14 +1,9 @@
 {
 	"background_color": "black",
 	"categories": [
-		"portfolio",
-		"abhay",
-		"personal",
-		"blog",
-		"programming",
-		"coding",
-		"nodejs",
-		"technology"
+		"social",
+		"utilities",
+		"navigation"		
 	],
 	"description": "Abhay's personal website",
 	"dir": "ltr",

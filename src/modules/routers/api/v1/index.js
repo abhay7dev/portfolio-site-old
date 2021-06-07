@@ -30,6 +30,7 @@ router.get("/asset-files", (req, res) => {
 	});
 });
 
+// Might remove for github auth instead
 router.use((req, res, next) => {
 	if(
 		req.get("X-Replit-User-Name").toLowerCase() === process.env.ADMIN_USER_NAME &&
