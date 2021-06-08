@@ -27,41 +27,46 @@
 	background: rgb(25, 5, 100);
 }
 
-body,
-html {
+* {
 	margin: 0;
 	padding: 0;
-	color: ghostwhite;
-	height: 100%;
-	background-color: black;
-	background: linear-gradient(45deg, rgba(0, 0, 0, 0.3), rgba(1, 10, 60, 0.3)),
-		url(/static/images/bg.jpg) no-repeat center center fixed;
-	background-size: cover;
 }
 
-main {
-	margin: 0;
+html {
+	background-color: black;
+}
+
+body {
+	color: ghostwhite;
+	background-color: black;
+	background: url(/static/images/bg.jpg) no-repeat center center fixed;
+	background-size: cover;
+	width: 100vw;
+	height: 100vh;
+}
+
+body:before{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	content: "";
+	background: rgb(0, 0, 0);
+	animation: fade-out 99999s 3 linear; 
+}
+
+@keyframes fade-out {
+	0% { opacity: 1; }
+	0.002% { opacity: 0; }
+	100% { opacity: 0; }
 }
 
 a {
-	color: ghostwhite;
 	text-decoration: none;
-	transition: text-decoration 1s;
+	color: ghostwhite;
 }
 
 a:hover {
 	text-decoration: underline;
-}
-
-.center {
-	text-align: center;
-}
-
-#title {
-	font-family: halo-outline;
-	font-size: 20vw;
-}
-
-#error {
-	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }

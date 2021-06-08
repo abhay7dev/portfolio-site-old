@@ -1,46 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="utf-8>
+		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="content-security-policy" content="upgrade-insecure-requests; default-src 'none'; script-src 'none'; script-src-elem 'unsafe-inline'; style-src 'none'; style-src-elem 'unsafe-inline'; manifest-src 'self'; font-src 'self'; img-src 'self'">
-
-		<meta name="msapplication-TileColor" content="#22467a">
-		<meta name="theme-color" content="#142134">
-		
-		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-		<link rel="manifest" href="/manifest.webmanifest">
 		
 		<style>
 
-			@font-face {
-				font-family: halo-outline;
-				src: url(/static/fonts/halo-outline.ttf);
+			html {
+				background-color: black;
+				color: ghostwhite;
+				font-family: Verdana;
 			}
 
-			::-webkit-scrollbar {
-				width: 1vh;
-			}
-
-			::-webkit-scrollbar-track {
-				box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-				background-color: rgb(10, 0, 36);
-			}
-
-			::-webkit-scrollbar-thumb {
-				border-radius: 10px;
-				background: rgba(40, 0, 175, 0.2);
-				transition: background 500ms;
-			}
-
-			::-webkit-scrollbar-thumb:hover {
-				background: rgb(25, 5, 100);
-			}
-
-			.center {
+			body {
 				text-align: center;
 			}
 
@@ -50,21 +23,22 @@
 	</head>
 
 	<body>
-		<div class="center">
+		<main>
 			<h1>You are offline</h1>
 			<h3>You are not online, please be online in order to use this webapp</h3>
 			<button id="reload">Reload page</button>
-		</div>
-		<script>
-
-			"use strict";
-
-			(function() {
-				window.addEventListener("online", location.reload);
-				document.getElementById("reload").addEventListener("click", location.reload);
-				window.setInterval(location.reload, 1000 * 60);
-			})();
-		
+		</main>
+		<script type="module">
+			const reload = () => {
+				if(location.pathname === "/static/offline/offline.html") {
+					location.pathname = "/";
+				} else {
+					location.reload();
+				}
+			}
+			window.addEventListener("online", reload);
+			document.getElementById("reload").addEventListener("click", reload);
+			window.setInterval(reload, 1000 * 60);
 		</script>				
 
 	</body>

@@ -6,12 +6,12 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "node --experimental-specifier-resolution=node src",
-		"dev": "node --abort-on-uncaught-exception --throw-deprecation --trace-warnings --unhandled-rejections=strict --experimental-specifier-resolution=node src",
+		"dev": "node --abort-on-uncaught-exception --throw-deprecation --trace-warnings --unhandled-rejections=strict --experimental-specifier-resolution=node src dev",
 		"prettier": "printf \"npx prettier --write --use-tabs --tab-width 4 src\n(Not running)\n\""
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/EpicGamer007/EpicGamer007.git"
+		"url": "git+https://github.com/EpicGamer007/portfolio-site.git"
 	},
 	"keywords": [
 		"portfolio",
@@ -25,12 +25,11 @@
 		"express": "^4.17.1",
 		"express-ejs-layouts": "^2.5.0",
 		"express-rate-limit": "^5.2.6",
-		"glob": "^7.1.7",
 		"helmet": "^4.6.0"
 	},
 	"devDependencies": {},
 	"bugs": {
-		"url": "https://github.com/EpicGamer007/EpicGamer007/issues"
+		"url": "https://github.com/EpicGamer007/portfolio-site/issues"
 	},
-	"homepage": "https://github.com/EpicGamer007/EpicGamer007#site"
+	"homepage": "https://github.com/EpicGamer007/portfolio-site"
 }

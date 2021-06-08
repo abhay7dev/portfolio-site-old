@@ -2,38 +2,50 @@
 <meta name="description" content="<%- desc %>">
 <meta name="author" content="Abhay">
 <meta name="keywords" content="abhay, personal, portfolio, blog, programming, technology">
+<!-- Above: Basic page info meta tags -->
 
+<!-- Open Graph/Facebook meta tags -->
 <meta name="og:title" content="<%= title %>">
 <meta name="og:type" content="website">
-<meta name="og:url" content="<%-data.fullUrlNoQuery%>">
+<meta name="og:url" content="<%-data.url%>">
 <meta name="og:image" content="<%-data.mainHref%>/static/images/bg.jpg">
 <meta name="og:description" content="<%- desc %>">
 
+<!-- Twitter meta tags -->
 <meta name="twitter:card" content="summary">
-<meta name="twitter:url" content="<%- data.fullUrlNoQuery %>">
+<meta name="twitter:url" content="<%- data.url %>">
 <meta name="twitter:title" content="<%= title %>">
 <meta name="twitter:description" content="<%- desc %>">
 <meta name="twitter:image" content="<%-data.mainHref%>/static/images/bg.jpg">
 
+<!-- Colors -->
 <meta name="msapplication-TileColor" content="#22467a">
 <meta name="theme-color" content="#142134">
 
+<!-- Miscellaneous meta tags -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google" content="notranslate">
 
+<!-- meta tags for each page -->
 <%- meta %>
 
+<!-- Page info -->
 <title><%- title %></title>
-<base href="/" target="_self">
+
+<!-- styles -->
 <link rel="stylesheet" href="/static/styles/style.css">
 <%- style %>
 
+<!-- Icons, canonical, and manifest -->
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 <link rel="manifest" href="/manifest.webmanifest">
-<link rel="canonical" href="<%- data.fullUrlNoQuery %>">
+<link rel="canonical" href="<%- data.url %>">
 
-<script type="module" src="/static/scripts/script.js"></script>
+<!-- scripts -->
+<% if(!data.dev) { %>
+	<script type="module" src="/static/scripts/register.js"></script>
+<% } %>
 <%- script %>

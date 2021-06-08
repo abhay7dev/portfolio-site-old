@@ -9,7 +9,7 @@ router.use(
 	})
 );
 
-import { data } from "../misc.js";
+import data from "./middleware/data.js";
 router.use(data);
 
 router.get("/", (req, res) => {

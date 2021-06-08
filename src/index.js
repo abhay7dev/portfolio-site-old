@@ -9,7 +9,7 @@ import helmet from "helmet";
 
 import routers from "./modules/routers.js";
 
-import { serverSettings as config, home, errors } from "./config.js";
+import { serverSettings as config, home, errors, dev } from "./config.js";
 import { join } from "path";
 
 app.set("view engine", "ejs");
@@ -22,11 +22,10 @@ app.use(helmet({ xssFilter: false }));
 app.use(layouts);
 
 app.use((req, res, next) => {
-	// console.log(`Requested: ${req.hostname.toLowerCase()}\nMAIN_DOMAIN: ${config.MAIN_DOMAIN.toLowerCase()}`);
 	if(req.hostname.toLowerCase() !== config.MAIN_DOMAIN.toLowerCase()) {
-		return res.redirect(`${config.MAIN_HREF}/${req.path}`);
+		res.redirect(`${config.MAIN_HREF}/${req.baseUrl}${req.path}`);
 	}
-	return next();
+	next();
 });
 
 app.use(routers.staticRouter);
@@ -42,9 +41,10 @@ app.use((req, res) => {
 
 server.listen(config.PORT, () => {
 	console.log(
-		"\nlistening on port %s at %s starting at %s UTC time",
+		"Listening on port %s at \n\t%s\nStarting at %s UTC time\nRunning '%s' version",
 		config.PORT,
-		config.hrefs(),
-		new Date().toLocaleString()
+		config.locations().join("\n\t"),
+		new Date().toLocaleString(),
+		dev ? "DEVELOPMENT" : "PRODUCTION"
 	);
 });

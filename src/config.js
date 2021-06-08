@@ -2,6 +2,8 @@ const { env } = process;
 
 export const home = new URL("./", import.meta.url).pathname;
 
+export const dev = process.argv[process.argv.length - 1] === "dev";
+
 export const errors = {
 	403: {
 		errorType: "403 Forbidden",
@@ -25,55 +27,40 @@ export const errors = {
 
 export const serverSettings = new (class {
 	constructor() {
-		this.REPL_SLUG = env.REPL_SLUG;
-		this.REPL_OWNER = env.REPL_OWNER;
 		this.PORT = env.PORT || 5050;
-		this.DOMAINS = [
+
+		this.DOMAINS = Object.freeze([
 			"abhay7.is-a.dev",
-			"EpicGamer007.repl.co",
-			"26ece53e-5ca7-40d2-a7ad-cc13eb22808d.id.repl.co",
-		];
+			env.REPL_SLUG === env.REPL_OWNER ? `${env.REPL_OWNER}.repl.co` : `${env.REPL_SLUG}.${env.REPL_OWNER}.repl.co`,
+			`${env.REPL_ID}.id.repl.co`,
+		]);
 		this.MAIN_DOMAIN = this.DOMAINS[0];
 		this.MAIN_HREF = `https://${this.DOMAINS[0]}`;
-		this.hrefs = (add = "", str = true) => {
-			if(str) {
-				let str = "";
 
-				for (let i = 0; i < this.DOMAINS.length - 1; i++) {
-					str += `https://${this.DOMAINS[i]}${add} `;
-				}
-				str += `https://${this.DOMAINS[this.DOMAINS.length - 1]}${add}`;
+		this.locations = (options = {}) => {
 
-				return str;
-			} else {
-				const arr = [];
-
-				for (let i = 0; i < this.DOMAINS.length; i++) {
-					arr.push(`https://${this.DOMAINS[i]}${add}`);
-				}
-
-				return arr;
+			const ops = {
+				add: "",
+				href: "https://"
 			}
-		};
-		this.domains = (add = "", str = true) => {
-			if(str) {
-				let str = "";
 
-				for (let i = 0; i < this.DOMAINS.length - 1; i++) {
-					str += `${this.DOMAINS[i]}${add} `;
+			Object.keys(options).forEach(key => {
+				if(
+					ops.hasOwnProperty(key) &&
+					typeof ops[key] === typeof options[key]
+				) {
+					ops[key] = options[key];
 				}
-				str += `${this.DOMAINS[this.DOMAINS.length - 1]}${add}`;
+			});
 
-				return str;
-			} else {
-				const arr = [];
+			const locs = [];
 
-				for (let i = 0; i < this.DOMAINS.length; i++) {
-					arr.push(`${this.DOMAINS[i]}${add}`);
-				}
-
-				return arr;
+			for (let i = 0; i < this.DOMAINS.length; i++) {
+				locs.push(ops.href + this.DOMAINS[i] + ops.add);
 			}
+
+			return locs;
+
 		};
 	}
 })();
