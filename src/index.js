@@ -9,7 +9,12 @@ import helmet from "helmet";
 
 import routers from "./modules/routers.js";
 
-import { serverSettings as config, home, errors, dev } from "./config.js";
+import {
+	settings as config,
+	home,
+	errors,
+	dev
+} from "./config.js";
 import { join } from "path";
 
 app.set("view engine", "ejs");
@@ -23,7 +28,7 @@ app.use(layouts);
 
 app.use((req, res, next) => {
 	if(req.hostname.toLowerCase() !== config.MAIN_DOMAIN.toLowerCase()) {
-		res.redirect(`${config.MAIN_HREF}/${req.baseUrl}${req.path}`);
+		return res.redirect(`${config.MAIN_HREF}/${req.baseUrl}${req.path}`);
 	}
 	next();
 });
@@ -43,7 +48,7 @@ server.listen(config.PORT, () => {
 	console.log(
 		"Listening on port %s at \n\t%s\nStarting at %s UTC time\nRunning '%s' version",
 		config.PORT,
-		config.locations().join("\n\t"),
+		config.HREFS.join("\n\t"),
 		new Date().toLocaleString(),
 		dev ? "DEVELOPMENT" : "PRODUCTION"
 	);

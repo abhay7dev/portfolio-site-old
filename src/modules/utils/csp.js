@@ -11,10 +11,10 @@ export default class {
 		this.validDirectives = [
 			'child-src', 'connect-src', 'default-src', 'font-src', 'frame-src',
 			'img-src', 'manifest-src', 'media-src', 'object-src', 'script-src','script-src-elem', 'script-src-attr', 'style-src', 'style-src-elem', 'worker-src', 'style-src-attr', 'base-uri', 'plugin-types', 'sandbox', 'form-action',
-			'frame-ancestors', 'block-all-mixed-content', 'upgrade-insecure-requests', 'prefetch-src', 'navigate-to'
+			'frame-ancestors', 'block-all-mixed-content', 'upgrade-insecure-requests', 'prefetch-src', 'require-trusted-types-for'
 		];
 		this.quoteSources = [
-			'self', 'unsafe-inline', 'unsafe-eval', 'unsafe-hashes', 'none', 'strict-dynamic'
+			'self', 'unsafe-inline', 'unsafe-eval', 'unsafe-hashes', 'none', 'strict-dynamic', 'script'
 		];
 		this.quoteSourceByPrefix = [
 			'nonce', 'sha256', 'sha512', 'sha384'
