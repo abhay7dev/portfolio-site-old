@@ -33,9 +33,9 @@ export default function (req, res, next) {
 
 	res.data = {
 		path: req.path,
-		hostname: MAIN_DOMAIN,
-		mainHref: MAIN_HREF,
+		href: MAIN_HREF,
 		url: `${MAIN_HREF}/${req.originalUrl}`,
+		year: new Date().getFullYear(),
 		dev
 	};
 	
