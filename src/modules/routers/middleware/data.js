@@ -27,11 +27,12 @@ export default function (req, res, next) {
 		script-src-attr 'none';
 		worker-src ${MAIN_HREF}/static/scripts/;
 		form-action ${MAIN_HREF}/api/;
+		require-trusted-types-for 'script';
 	`.replace(/\s/g, " ");
 
 	res.data = {
 		href: MAIN_HREF,
-		url: `${MAIN_HREF}${req.originalUrl}`,
+		url: `${MAIN_HREF}${req.path}`,
 		year: new Date().getFullYear(),
 		dev
 	};
