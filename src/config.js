@@ -15,25 +15,30 @@ export const errors = {
 	},
 	405: {
 		errorType: "405 Method not allowed",
-		errorMessage: "The requested resource was requested incorrectly",
+		errorMessage: "The requested resource was requested incorrectly.",
+	},
+	429: {
+		errorType: "429 Too Many Requests",
+		errorMessage: "Too many requests has come from this device, please try again later.",
 	},
 	500: {
 		errorType: "500 Internal server error",
-		errorMessage: "The server could not handle the request which caused an error in returning the resource",
+		errorMessage: "The server could not handle the request which caused an error in returning the resource.",
 	},
 };
 
 export const settings = Object.freeze({
 	PORT: env.PORT || 5050,
-	HREFS: Object.freeze([
+	HREFS: Object.freeze([... new Set([
 		"https://abhay7.is-a.dev",
 		`https://${env.REPL_ID}.id.repl.co`,
-		"https://" + (env.REPL_SLUG === env.REPL_OWNER ? `${env.REPL_OWNER}.repl.co` : `${env.REPL_SLUG}.${env.REPL_OWNER}.repl.co`)
-	].map(href => href.toLowerCase())),
-	get MAIN_DOMAIN() {
-		return this.HREFS[0].substring("https://".length, this.HREFS[0].length);
-	},
+		"https://" + (env.REPL_SLUG === env.REPL_OWNER ? `${env.REPL_OWNER}.repl.co` : `${env.REPL_SLUG}.${env.REPL_OWNER}.repl.co`),
+		"https://" + (env.REPL_SLUG === env.REPL_OWNER ? `${env.REPL_OWNER}.repl.co` : `${env.REPL_SLUG}--${env.REPL_OWNER}.repl.co`),
+	].map(href => href.toLowerCase()))]),
 	get MAIN_HREF() {
 		return this.HREFS[0];
+	},
+	get MAIN_DOMAIN() {
+		return this.HREFS[0].substring("https://".length, this.HREFS[0].length);
 	}
 });

@@ -6,3 +6,5 @@ if ("serviceWorker" in navigator) {
 		console.error("Error initializing service worker.");
 	});
 }
+
+console.log("Trustworthy script");

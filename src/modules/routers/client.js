@@ -1,16 +1,24 @@
 import express from "express";
 const router = express.Router();
 
+import { errors } from "../../config.js";
+
+import data from "./middleware/data.js";
+router.use(data);
+
 import rateLimit from "express-rate-limit";
 router.use(
 	rateLimit({
 		windowMs: 60 * 1000,
 		max: 30,
+		handler: (req, res) => {
+			res.data.error = errors[429]
+			res.render("error", {
+				data: res.data
+			});
+		}
 	})
 );
-
-import data from "./middleware/data.js";
-router.use(data);
 
 router.get("/", (req, res) => {
 	res.render("index", {

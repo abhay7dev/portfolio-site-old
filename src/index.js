@@ -18,17 +18,19 @@ import {
 import { join } from "path";
 
 app.set("view engine", "ejs");
+
 app.set("views", join(home, "views"));
+
 app.set("layout extractScripts", true);
-app.set("layout extractMetas", true);
 app.set("layout extractStyles", true);
+app.set("layout extractMetas", true);
 
 app.use(helmet({ xssFilter: false }));
 app.use(layouts);
 
 app.use((req, res, next) => {
-	if(req.hostname.toLowerCase() !== config.MAIN_DOMAIN.toLowerCase()) {
-		return res.redirect(`${config.MAIN_HREF}/${req.baseUrl}${req.path}`);
+	if(req.hostname.toLowerCase() !== config.MAIN_DOMAIN) {
+		return res.redirect(`${config.MAIN_HREF}/${req.originalUrl}`);
 	}
 	next();
 });
@@ -46,10 +48,10 @@ app.use((req, res) => {
 
 server.listen(config.PORT, () => {
 	console.log(
-		"Listening on port %s at \n\t%s\nStarting at %s UTC time\nRunning '%s' version",
+		"Listening on port %s at \n\t%s\nStarting at %s pacific time\nRunning '%s' version",
 		config.PORT,
 		config.HREFS.join("\n\t"),
-		new Date().toLocaleString(),
+		new Date().toLocaleString("en-US", {timeZone: "America/Los_Angeles"}),
 		dev ? "DEVELOPMENT" : "PRODUCTION"
 	);
 });

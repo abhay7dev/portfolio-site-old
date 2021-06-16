@@ -1,48 +1,45 @@
 import { settings, dev } from "../../../config.js";
 const { MAIN_DOMAIN, MAIN_HREF } = settings;
 
-import CSP from "../../utils/csp.js";
-const cspObj = new CSP();
-cspObj.load({
-	"upgrade-insecure-requests": [""],
-	"default-src": ["none"],
-	"style-src": ["none"],
-	"style-src-elem": [`${MAIN_HREF}/static/styles/`],
-	"style-src-attr": ["none"],
-	"font-src": [`${MAIN_HREF}/static/fonts/`],
-	"child-src": ["none"],
-	"connect-src": ["*"],
-	"frame-src": ["none"],
-	"manifest-src": ["self"],
-	"frame-ancestors": ["none"],
-	"img-src": ["self"],
-	"media-src": ["none"],
-	"object-src": ["none"],
-	"prefetch-src": ["none"],
-	"script-src": ["none"],
-	"script-src-elem": [`${MAIN_HREF}/static/scripts/`],
-	"script-src-attr": ["none"],
-	"worker-src": [`${MAIN_HREF}/static/scripts/`],
-	"form-action": [`${MAIN_HREF}/api/`],
-	"base-uri": ["self"],
-	"require-trusted-types-for": ["script"]
-});
-const contentSecurityPolicy = cspObj.share("string");
+import { randomBytes } from "crypto";
 
 export default function (req, res, next) {
 
+	const csp = `
+		upgrade-insecure-requests;
+		default-src 'none';
+		child-src 'none';
+		frame-src 'none';
+		frame-ancestors 'none';
+		media-src 'none';
+		base-uri 'none';
+		object-src 'none';
+		prefetch-src 'none';
+		manifest-src 'self';
+		img-src 'self';
+		connect-src *;
+		font-src ${MAIN_HREF}/static/fonts/;
+		style-src ${MAIN_HREF}/static/styles/;
+		style-src-elem ${MAIN_HREF}/static/styles/;
+		style-src-attr 'none';
+		script-src ${MAIN_HREF}/static/scripts/;
+		script-src-elem ${MAIN_HREF}/static/scripts/;
+		script-src-attr 'none';
+		worker-src ${MAIN_HREF}/static/scripts/;
+		form-action ${MAIN_HREF}/api/;
+	`.replace(/\s/g, " ");
+
 	res.data = {
-		path: req.path,
 		href: MAIN_HREF,
-		url: `${MAIN_HREF}/${req.originalUrl}`,
+		url: `${MAIN_HREF}${req.originalUrl}`,
 		year: new Date().getFullYear(),
 		dev
 	};
 	
 	res.set({
-		"Content-Security-Policy": contentSecurityPolicy,
+		"Content-Security-Policy": csp,
 		"X-Content-Type-Options": "nosniff",
-		"Content-Type": "text/html; charset=UTF-8",
+		"Content-Type": "text/html; charset=utf-8",
 		"Cache-Control": "no-cache",
 	});
 

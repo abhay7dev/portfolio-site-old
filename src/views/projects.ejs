@@ -1,8 +1,8 @@
 <section class="cards">
 	<% data.projects.forEach(pro => { %>
 		<article class="card">
-			<a href="<%=pro.link%>"><%=pro.name%></a>
-			<p><%=pro.description%></p>
+			<a href="<%= pro.link %>"><%= pro.name %></a>
+			<p><%= pro.description %></p>
 		</article>
 	<% }) %>
 </section>

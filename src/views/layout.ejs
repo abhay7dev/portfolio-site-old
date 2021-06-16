@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-	
-		<%- include("./components/head", { data, title }) %>
-		
+		<%- include("./components/head") %>
 	</head>
-	
 	<body>
-		
-		<%- include("./components/noscript") %>
+		<noscript>
+			<h1>Your browser does not support JavaScript or JavaScript has been disabled. If it is disabled, please enable it to use this webapp.</h1>
+		</noscript>
+
+		<h1><%- data.nonce %></h1>
 
 		<%- include("./components/nav") %>
 		
 		<main>
-		
 			<%- body %>
-
 		</main>
 		
 		<%- include("./components/footer") %>
-
 	</body>
 </html>
