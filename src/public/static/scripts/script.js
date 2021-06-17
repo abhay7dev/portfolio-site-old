@@ -16,22 +16,24 @@ const startTime = new Date();
 let elapsedTime;
 let dismissonLoadFunc, maxLoadingTimer;
 
-window.addEventListener('load', dismissonLoadFunc = () => {
+window.addEventListener("load", dismissonLoadFunc = () => {
+
 	clearTimeout(maxLoadingTimer);
+	
 	elapsedTime = new Date() - startTime;
 	const hidepageloadertimer = (elapsedTime > minLoadingTime) ? 0 : minLoadingTime - elapsedTime;
 
 	setTimeout(() => {
-		document.getElementById('pageloader').classList.add('dimissloader');
+		document.getElementById("pageloader").classList.add("dismissloader");
 	}, hidepageloadertimer);
 
 }, false);
 
 maxLoadingTimer = setTimeout(() => {
-	window.removeEventListener('load', dismissonLoadFunc, false);
-	document.getElementById('pageloader').classList.add('dimissloader');
+	window.removeEventListener("load", dismissonLoadFunc, false);
+	document.getElementById("pageloader").classList.add("dismissloader");
 }, maxLoadingTime);
 
-window.addEventListener('beforeunload', () => {
-	document.body.classList.add('fadeout');
+window.addEventListener("beforeunload", () => {
+	document.body.classList.add("fadeout");
 }, false);

@@ -94,7 +94,7 @@ noscript > h1 {
 	transition: opacity .4s;
 }
 
-#pageloader.dimissloader{
+#pageloader.dismissloader{
 	opacity: 0;
 	visibility: hidden;
 	transition: opacity 1s, visibility 0s 1s;
