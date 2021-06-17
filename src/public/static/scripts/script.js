@@ -7,6 +7,8 @@ if ("serviceWorker" in navigator) {
 	});
 }
 
+// The following is originally from here: http://www.javascriptkit.com/dhtmltutors/page-transition-tutorial.shtml
+
 const minLoadingTime = 100;
 const maxLoadingTime = 3000
 
