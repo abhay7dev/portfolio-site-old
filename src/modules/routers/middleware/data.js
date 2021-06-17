@@ -4,6 +4,7 @@ const { MAIN_DOMAIN, MAIN_HREF } = settings;
 import { randomBytes } from "crypto";
 
 export default function (req, res, next) {
+	const nonce = randomBytes(16).toString("base64");
 
 	const csp = `
 		upgrade-insecure-requests;
@@ -19,21 +20,25 @@ export default function (req, res, next) {
 		img-src 'self';
 		connect-src *;
 		font-src ${MAIN_HREF}/static/fonts/;
+		style-src 'nonce-${nonce}';
 		style-src ${MAIN_HREF}/static/styles/;
+		style-src-elem 'nonce-${nonce}';
 		style-src-elem ${MAIN_HREF}/static/styles/;
 		style-src-attr 'none';
+		script-src 'nonce-${nonce}';
 		script-src ${MAIN_HREF}/static/scripts/;
+		script-src-elem 'nonce-${nonce}';
 		script-src-elem ${MAIN_HREF}/static/scripts/;
 		script-src-attr 'none';
 		worker-src ${MAIN_HREF}/static/scripts/;
 		form-action ${MAIN_HREF}/api/;
-		require-trusted-types-for 'script';
 	`.replace(/\s/g, " ");
 
 	res.data = {
 		href: MAIN_HREF,
 		url: `${MAIN_HREF}${req.path}`,
 		year: new Date().getFullYear(),
+		nonce,
 		dev
 	};
 	

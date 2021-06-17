@@ -7,7 +7,7 @@ const server = createServer(app);
 
 import helmet from "helmet";
 
-import routers from "./modules/routers.js";
+import routers from "./modules/routers/";
 
 import {
 	settings as config,
