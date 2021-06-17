@@ -54,6 +54,15 @@ a:hover {
 	text-decoration: underline;
 }
 
+.transition-fade {
+	transition: all 0.5s;
+	transform: scale(100%, 100%);
+}
+
+html.is-animating .transition-fade {
+	transform: scale(1%, 1%);
+}
+
 noscript > h1 {
 	color: ghostwhite;
 	font-family: sans-serif;
