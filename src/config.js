@@ -35,6 +35,16 @@ export const settings = Object.freeze({
 		"https://" + (env.REPL_SLUG === env.REPL_OWNER ? `${env.REPL_OWNER}.repl.co` : `${env.REPL_SLUG}.${env.REPL_OWNER}.repl.co`),
 		"https://" + (env.REPL_SLUG === env.REPL_OWNER ? `${env.REPL_OWNER}.repl.co` : `${env.REPL_SLUG}--${env.REPL_OWNER}.repl.co`),
 	].map(href => href.toLowerCase()))]),
+	get REDIRECTS() {
+		if(this.HREFS.indexOf(`https://${env.REPL_OWNER}.repl.co`) !== -1) {
+			return Object.freeze([`https://${env.REPL_OWNER}.github.io`].map(href => href.toLowerCase()));
+		} else {
+			return Object.freeze([
+				`https://${env.REPL_OWNER}.repl.co`,
+				`https://${env.REPL_OWNER}.github.io`
+			].map(href => href.toLowerCase()));
+		}
+	},
 	get MAIN_HREF() {
 		return this.HREFS[0];
 	},

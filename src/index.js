@@ -48,9 +48,10 @@ app.use((req, res) => {
 
 server.listen(config.PORT, () => {
 	console.log(
-		"Listening on port %s at \n\t%s\nStarting at %s pacific time\nRunning '%s' version",
+		"Listening on port %s at \n\t%s\nWith redirects from\n\t%s\nStarting at %s pacific time\nRunning '%s' version",
 		config.PORT,
 		config.HREFS.join("\n\t"),
+		config.REDIRECTS.join("\n\t"),
 		new Date().toLocaleString("en-US", {timeZone: "America/Los_Angeles"}),
 		dev ? "DEVELOPMENT" : "PRODUCTION"
 	);
