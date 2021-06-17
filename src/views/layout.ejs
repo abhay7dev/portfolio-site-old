@@ -4,13 +4,21 @@
 		<%- include("./components/head") %>
 	</head>
 	<body>
+		<%- include("./components/nav") %>
+
 		<noscript>
 			<h1>Your browser does not support JavaScript or JavaScript has been disabled. If it is disabled, please enable it to use this webapp.</h1>
 		</noscript>
 
-		<%- include("./components/nav") %>
+		<div id="pageloader">
+			<div class="spinner">
+				<div class="bounce1"></div>
+				<div class="bounce2"></div>
+				<div class="bounce3"></div>
+			</div>
+		</div>
 		
-		<main id="swup" class="transition-fade">
+		<main>
 			<%- body %>
 		</main>
 		

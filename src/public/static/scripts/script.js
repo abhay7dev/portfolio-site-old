@@ -7,4 +7,29 @@ if ("serviceWorker" in navigator) {
 	});
 }
 
-const swup = new Swup();
+const minLoadingTime = 100;
+const maxLoadingTime = 3000
+
+const startTime = new Date();
+let elapsedTime;
+let dismissonLoadFunc, maxLoadingTimer;
+
+window.addEventListener('load', dismissonLoadFunc = () => {
+	clearTimeout(maxLoadingTimer);
+	elapsedTime = new Date() - startTime;
+	const hidepageloadertimer = (elapsedTime > minLoadingTime) ? 0 : minLoadingTime - elapsedTime;
+
+	setTimeout(() => {
+		document.getElementById('pageloader').classList.add('dimissloader');
+	}, hidepageloadertimer);
+
+}, false);
+
+maxLoadingTimer = setTimeout(() => {
+	window.removeEventListener('load', dismissonLoadFunc, false);
+	document.getElementById('pageloader').classList.add('dimissloader');
+}, maxLoadingTime);
+
+window.addEventListener('beforeunload', () => {
+	document.body.classList.add('fadeout');
+}, false);

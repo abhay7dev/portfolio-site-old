@@ -54,15 +54,6 @@ a:hover {
 	text-decoration: underline;
 }
 
-.transition-fade {
-	transition: all 0.5s;
-	transform: scale(100%, 100%);
-}
-
-html.is-animating .transition-fade {
-	transform: scale(1%, 1%);
-}
-
 noscript > h1 {
 	color: ghostwhite;
 	font-family: sans-serif;
@@ -81,4 +72,77 @@ noscript > h1 {
 	transform: translate(-50%, -50%);
 	z-index: 99999999;
 	border-radius: 4px;
+}
+
+#pageloader {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 10000;
+	background: rgb(0, 0, 0);
+}
+
+.spinner {
+	width: 70px;
+	text-align: center;
+	opacity: 1;
+	transition: opacity .4s;
+}
+
+#pageloader.dimissloader{
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 1s, visibility 0s 1s;
+}
+ 
+.spinner > div {
+	width: 18px;
+	height: 18px;
+	background-color: ghostwhite;
+	border-radius: 100%;
+	display: inline-block;
+	-webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+	animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+ 
+.spinner .bounce1 {
+	-webkit-animation-delay: -0.32s;
+	animation-delay: -0.32s;
+}
+ 
+.spinner .bounce2 {
+	-webkit-animation-delay: -0.16s;
+	animation-delay: -0.16s;
+}
+
+body.fadeout{
+    transition: opacity 0.2s;
+    opacity: 0;
+}
+ 
+@keyframes sk-bouncedelay {
+	0%, 80%, 100% { 
+		-webkit-transform: scale(0);
+		transform: scale(0);
+	} 40% { 
+		-webkit-transform: scale(1.0);
+		transform: scale(1.0);
+	}
+}
+
+@media (prefers-color-scheme: light) {
+	html, body {
+		background-color: white;
+	}
+	#pageloader {
+		background: white;
+	}
+	.spinner > div {
+		background-color: #333;
+	}
 }
