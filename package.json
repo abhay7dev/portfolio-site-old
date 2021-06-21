@@ -6,7 +6,7 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "node --experimental-specifier-resolution=node src",
-		"dev": "node --abort-on-uncaught-exception --throw-deprecation --trace-warnings --unhandled-rejections=strict --experimental-specifier-resolution=node src dev",
+		"start:dev": "node --abort-on-uncaught-exception --throw-deprecation --trace-warnings --unhandled-rejections=strict --experimental-specifier-resolution=node src dev",
 		"format": "printf \"npx prettier --write --use-tabs --tab-width 4 src\n(Not running)\n\""
 	},
 	"repository": {

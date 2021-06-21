@@ -1,1 +1,1 @@
-run = "npm run dev"
+run = "npm run start:dev"
