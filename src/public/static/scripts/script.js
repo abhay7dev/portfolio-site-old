@@ -1,12 +1,3 @@
-if ("serviceWorker" in navigator) {
-	navigator.serviceWorker.register("/static/scripts/sw.js", { scope: "/" }).then((reg) => {
-		console.log("Initialized service worker");
-		console.log(reg);
-	}).catch(() => {
-		console.error("Error initializing service worker.");
-	});
-}
-
 // The following is originally from here: http://www.javascriptkit.com/dhtmltutors/page-transition-tutorial.shtml
 
 const minLoadingTime = 100;
@@ -37,3 +28,14 @@ maxLoadingTimer = setTimeout(() => {
 window.addEventListener("beforeunload", () => {
 	document.body.classList.add("fadeout");
 }, false);
+
+// Register the service worker for PWA
+
+if ("serviceWorker" in navigator) {
+	navigator.serviceWorker.register("/static/scripts/sw.js", { scope: "/" }).then((reg) => {
+		console.log("Initialized service worker");
+		console.log(reg);
+	}).catch(() => {
+		console.error("Error initializing service worker.");
+	});
+}
