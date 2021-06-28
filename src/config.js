@@ -4,6 +4,8 @@ export const home = new URL("./", import.meta.url).pathname; // Inside src folde
 
 export const dev = process.argv[process.argv.length - 1] === "dev"; // To run development version, make sure to add 'dev' to the end of the run command
 
+export const version = 1;
+
 export const errors = {
 	403: {
 		errorType: "403 Forbidden",

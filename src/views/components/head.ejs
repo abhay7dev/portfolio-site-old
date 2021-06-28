@@ -42,6 +42,12 @@
 
 <!-- scripts -->
 
+<script type="module" nonce="<%- data.nonce %>">
+
+	window.version = "<%- data.version %>";
+
+</script>
+
 <script nonce="<%- data.nonce %>" type="module" src="/static/scripts/script.js"></script>
 <%- script %>
 

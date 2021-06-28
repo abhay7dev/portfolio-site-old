@@ -1,4 +1,4 @@
-import { settings, dev } from "../../../config.js";
+import { settings, dev, version } from "../../../config.js";
 const { MAIN_DOMAIN, MAIN_HREF } = settings;
 
 import { randomBytes } from "crypto";
@@ -38,6 +38,7 @@ export default function (req, res, next) {
 		href: MAIN_HREF,
 		url: `${MAIN_HREF}${req.path}`,
 		year: new Date().getFullYear(),
+		version: `${dev ? "dev-" : ""}${version}`,
 		nonce,
 		dev
 	};

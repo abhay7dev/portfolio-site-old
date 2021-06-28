@@ -1,3 +1,5 @@
+console.log(`Site version: ${window.version ?? "No version specified"}`)
+
 // The following is originally from here: http://www.javascriptkit.com/dhtmltutors/page-transition-tutorial.shtml
 
 const minLoadingTime = 100;
