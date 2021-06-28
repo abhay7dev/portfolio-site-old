@@ -1,4 +1,5 @@
-console.log(`Site version: ${window.version ?? "No version specified"}`)
+const version = window.version;
+console.log(`Site version: ${version ?? "No version specified"}`)
 
 // The following is originally from here: http://www.javascriptkit.com/dhtmltutors/page-transition-tutorial.shtml
 
