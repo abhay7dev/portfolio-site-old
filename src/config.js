@@ -1,8 +1,14 @@
+import assert from "assert";
+
 const { env } = process;
 
 export const home = new URL("./", import.meta.url).pathname; // Inside src folder
 
-export const dev = process.argv[process.argv.length - 1] === "dev"; // To run development version, make sure to add 'dev' to the end of the run command
+assert(process.env.NODE_ENV === undefined || process.env.NODE_ENV === "production" || process.env.NODE_ENV === "development");
+
+export const NODE_ENV = process.env.NODE_ENV ? process.env.NODE_ENV : "development";
+
+export const dev = process.env.NODE_ENV !== "production";
 
 export const version = 1;
 

@@ -13,11 +13,14 @@ import {
 	settings as config,
 	home,
 	errors,
-	dev
+	NODE_ENV
 } from "./config.js";
 import { join } from "path";
 
 app.set("view engine", "ejs");
+app.set("env", NODE_ENV);
+app.set("json spaces", 4);
+app.set("x-powered-by", false);
 
 app.set("views", join(home, "views"));
 
@@ -53,6 +56,6 @@ server.listen(config.PORT, () => {
 		config.HREFS.join("\n\t"),
 		config.REDIRECTS.join("\n\t"),
 		new Date().toLocaleString("en-US", {timeZone: "America/Los_Angeles"}),
-		dev ? "DEVELOPMENT" : "PRODUCTION"
+		NODE_ENV
 	);
 });

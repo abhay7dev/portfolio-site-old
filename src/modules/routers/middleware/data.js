@@ -50,7 +50,6 @@ export default function (req, res, next) {
 		"Cache-Control": "no-cache",
 	});
 
-	res.removeHeader("X-Powered-By");
 	res.removeHeader("X-Frame-Options");
 
 	next();

@@ -5,8 +5,8 @@
 	"description": "My portfolio site",
 	"main": "index.js",
 	"scripts": {
-		"start": "node --experimental-specifier-resolution=node src",
-		"start:dev": "node --abort-on-uncaught-exception --throw-deprecation --trace-warnings --unhandled-rejections=strict --experimental-specifier-resolution=node src dev",
+		"start": "NODE_ENV=production node --experimental-specifier-resolution=node src",
+		"start:dev": "NODE_ENV=development node --abort-on-uncaught-exception --throw-deprecation --trace-warnings --unhandled-rejections=strict --experimental-specifier-resolution=node src",
 		"format": "printf \"npx prettier --write --use-tabs --tab-width 4 src\n(Not running)\n\""
 	},
 	"repository": {
