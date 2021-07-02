@@ -4,6 +4,7 @@
 <meta name="author" content="Abhay"/>
 <meta name="keywords" content="abhay, personal, portfolio, blog, programming, technology"/>
 <meta name="copyright" content="<%- data.year %>"/>
+<meta name="version" content="<%- data.version %>"/>
 
 <!-- Open Graph/Facebook meta tags -->
 <meta name="og:title" content="<%- title %>"/>
@@ -42,15 +43,9 @@
 
 <!-- scripts -->
 
-<script type="module" nonce="<%- data.nonce %>">
-
-	window.version = "<%- data.version %>";
-
-</script>
-
-<script nonce="<%- data.nonce %>" type="module" src="/static/scripts/script.js"></script>
-<script nonce="<%- data.nonce %>" nomodule="nomodule" src="/static/scripts/nomodule.js"></script>
+<script type="module" src="/static/scripts/script.js"></script>
+<script nomodule="nomodule" src="/static/scripts/nomodule.js"></script>
 <%- script %>
 
-<link nonce="<%- data.nonce %>" rel="stylesheet" href="/static/styles/style.css"/>
+<link rel="stylesheet" href="/static/styles/style.css"/>
 <%- style %>

@@ -1,7 +1,7 @@
-const version = window.version;
-console.log(`Site version: ${version ?? "No version specified"}`)
+const versionElem = document.querySelector(`meta[name="version"]`);
+console.log(`Site version: ${versionElem ? versionElem.content : "No version specified"}`)
 
-// The following is originally from here: http://www.javascriptkit.com/dhtmltutors/page-transition-tutorial.shtml
+// The following load in/out animation is originally from here: http://www.javascriptkit.com/dhtmltutors/page-transition-tutorial.shtml
 
 const minLoadingTime = 100;
 const maxLoadingTime = 3000
@@ -37,8 +37,7 @@ window.addEventListener("beforeunload", () => {
 if ("serviceWorker" in navigator) {
 	navigator.serviceWorker.register("/static/scripts/sw.js", { scope: "/" }).then((reg) => {
 		console.log("Initialized service worker");
-		console.log(reg);
-	}).catch(() => {
-		console.error("Error initializing service worker.");
+	}).catch((err) => {
+		console.error("Error initializing service worker.", err);
 	});
 }
