@@ -50,6 +50,7 @@ export const settings = Object.freeze({
 			return Object.freeze([
 				`https://${env.REPL_OWNER}.repl.co`,
 				`https://${env.REPL_OWNER}.${env.REPL_OWNER}.repl.co`,
+				`https://${env.REPL_OWNER}--${env.REPL_OWNER}.repl.co`,
 				`https://${env.REPL_OWNER}.github.io`
 			].map(href => href.toLowerCase()));
 		}
