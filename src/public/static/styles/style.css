@@ -197,3 +197,9 @@ header > nav:last-child {
 main {
 	padding: 5rem 1rem 5rem 1rem;
 }
+
+main > #main-title {
+	font-family: halo-outline;
+	font-size: 20vw;
+	text-align: center;
+}
