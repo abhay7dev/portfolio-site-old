@@ -15,7 +15,7 @@ export default function (req, res, next) {
 		prefetch-src 'none';
 		manifest-src 'self';
 		img-src 'self';
-		connect-src *;
+		connect-src 'self';
 		font-src ${MAIN_HREF}/static/fonts/;
 		style-src ${MAIN_HREF}/static/styles/;
 		style-src-elem ${MAIN_HREF}/static/styles/;
