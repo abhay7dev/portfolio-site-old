@@ -16,6 +16,7 @@
 <meta name="og:image" content="<%- data.href %>/static/images/bg.jpg"/>
 <meta property="og:image:alt" content="The background image to my portfolio site">
 <meta name="og:description" content="<%- desc %>"/>
+<meta property="og:site_name" content="Abhay">
 
 <!-- Twitter meta tags -->
 <meta name="twitter:card" content="summary"/>
@@ -23,6 +24,7 @@
 <meta name="twitter:title" content="<%- title %>"/>
 <meta name="twitter:description" content="<%- desc %>"/>
 <meta name="twitter:image" content="<%- data.href %>/static/images/bg.jpg"/>
+<meta property="twitter:image:alt" content="The background image to my portfolio site">
 
 <!-- Colors -->
 <meta name="msapplication-TileColor" content="#22467a"/>
@@ -46,6 +48,8 @@
 
 <!-- scripts -->
 
+<script type="module" src="/static/scripts/swup.min.js"></script>
+<script type="module" src="/static/scripts/SwupHeadPlugin.min.js"></script>
 <script type="module" src="/static/scripts/script.js"></script>
 <script nomodule="nomodule" src="/static/scripts/nomodule.js"></script>
 <%- script %>

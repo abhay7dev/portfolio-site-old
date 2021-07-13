@@ -26,40 +26,22 @@ router.get("/", (req, res) => {
 	});
 });
 
+router.get("/about", (req, res) => {
+	res.render("about", {
+		data: res.data
+	});
+});
+
 router.get("/projects", (req, res) => {
-	res.data.projects = [
-		{
-			name: "Project-1",
-			description: "A random description",
-			link: "https://example.com",
-		},
-		{
-			name: "Project-2",
-			description: "Lorem ipsum",
-			link: "https://example.com",
-		},
-		{
-			name: "Project-3",
-			description: "dolor sit amet",
-			link: "https://example.com",
-		},
-		{
-			name: "Project-4",
-			description: "what comes next",
-			link: "https://example.com",
-		},
-		{
-			name: "Project-5",
-			description: "idkh help",
-			link: "https://example.com",
-		},
-		{
-			name: "Project-6",
-			description: "sigh",
-			link: "https://example.com",
-		},
-	];
+	res.data.projects = [];
 	res.render("projects", {
+		data: res.data,
+	});
+});
+
+router.get("/blog", (req, res) => {
+	res.data.blogs = [];
+	res.render("blog", {
 		data: res.data,
 	});
 });
