@@ -59,6 +59,9 @@ self.addEventListener("fetch", (event) => {
 	} else {
 		event.respondWith((async () => {
 			try {
+				if (event.request.cache === 'only-if-cached' && event.request.mode !== 'same-origin') {
+					return;
+				}
 				return fetch(event.request);
 			} catch(err) {
 				error(err);

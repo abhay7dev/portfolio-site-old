@@ -13,9 +13,10 @@ Abhay's (EpicGamer007) portfolio site.
 * [`Express Rate Limit`](https://www.npmjs.com/package/express-rate-limit)
 * [`Express EJS Layouts`](https://www.npmjs.com/package/express-ejs-layouts)
 * [`Helmet`](https://helmetjs.github.io/)
+* [`node-fetch`](https://www.npmjs.com/package/node-fetch)
 * [`Swup`](https://swup.js.org)
 
-All packages above are MIT licensed unless otherwise specified. Licenses for the packages can be found in their respective folders in the `node_modules` folder after the `npm install` command is run. Dependencies used by the above packages are all licensed under [BSD-Style](https://snyk.io/blog/mit-apache-bsd-fairest-of-them-all/#copyleft-vs-bsd-style-or-permissive-licenses) licenses.
+All packages above are MIT licensed unless otherwise specified. Licenses for the packages can be found in their respective folders in the `node_modules` folder after the `npm install` command is run in the base directory. Dependencies used by the above packages are all licensed under [BSD-Style](https://snyk.io/blog/mit-apache-bsd-fairest-of-them-all/#copyleft-vs-bsd-style-or-permissive-licenses) licenses.
 
 ## License
 

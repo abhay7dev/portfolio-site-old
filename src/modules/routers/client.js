@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router();
 
-import { errors, dev } from "../../config.js";
+import { errors, dev, github } from "../../config.js";
 
 import data from "./middleware/data.js";
 router.use(data);
@@ -50,6 +50,12 @@ router.get("/contact", (req, res) => {
 	res.render("contact", {
 		data: res.data,
 	});
+});
+
+router.get("/login", (req, res) => {
+	const stateString = Math.random().toString(20).substr(2, 16);
+	global.stateCache.push(stateString);
+	res.redirect(`https://github.com/login/oauth/authorize?client_id=${github.CLIENT_ID}&state=${stateString}&allow_signup=false`);
 });
 
 export default router;

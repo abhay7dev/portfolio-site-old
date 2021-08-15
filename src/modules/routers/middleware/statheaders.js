@@ -6,6 +6,8 @@ export default function(req, res, next) {
 		res.set("Content-Type", `application/manifest+json; charset=utf-8`);
 	} else if(req.path.indexOf(".xml") !== -1) {
 		res.set("Content-Type", `text/xml; charset=utf-8`);
+	} else if(req.path.indexOf(".svg") !== -1) {
+		res.set("Content-Type", `image/svg+xml; charset=utf-8`);
 	}
 	
 	res.set("Cache-Control", "max-age=31536000, immutable");

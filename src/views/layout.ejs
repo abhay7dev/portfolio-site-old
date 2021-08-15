@@ -6,14 +6,14 @@
 	<body>
 		<%- include("./components/header") %>
 		
-		<main id="swup" class="transition-fade">
+		<main aria-live="polite" id="swup" class="transition-fade">
 			<%- body %>
 		</main>
 		
 		<%- include("./components/footer") %>
 
 		<noscript>
-			<h1>Your browser does not support JavaScript or JavaScript has been disabled. If it is disabled, please enable it to use this webapp.</h1>
+			<h1>Sorry, the page "<%= title %>" requires JavaScript (ECMAScript) to function. Your browser does not support JavaScript or JavaScript has been disabled. If it has been disabled, please enable it to use this webapp.</h1>
 		</noscript>
 		
 	</body>

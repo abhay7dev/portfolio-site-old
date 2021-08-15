@@ -28,15 +28,19 @@ app.set("layout extractScripts", true);
 app.set("layout extractStyles", true);
 app.set("layout extractMetas", true);
 
-app.use(helmet({ xssFilter: false }));
-app.use(layouts);
+import StateArray from "./modules/misc/StateArray.js";
+global.stateCache = new StateArray(300);
 
 app.use((req, res, next) => {
 	if(req.hostname.toLowerCase() !== config.MAIN_DOMAIN) {
-		return res.redirect(`${config.MAIN_HREF}/${req.originalUrl}`);
+		return res.redirect(`${config.MAIN_HREF}${req.originalUrl}`);
 	}
 	next();
 });
+
+app.use(helmet({ xssFilter: false }));
+
+app.use(layouts);
 
 app.use(routers.staticRouter);
 app.use(routers.clientRouter);

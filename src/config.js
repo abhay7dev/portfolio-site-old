@@ -4,11 +4,13 @@ const { env } = process;
 
 export const home = new URL("./", import.meta.url).pathname; // Inside src folder
 
-assert(process.env.NODE_ENV === undefined || process.env.NODE_ENV === "production" || process.env.NODE_ENV === "development");
+assert(env.NODE_ENV === undefined || env.NODE_ENV === "production" || env.NODE_ENV === "development");
 
-export const NODE_ENV = process.env.NODE_ENV ? process.env.NODE_ENV : "development";
+export const NODE_ENV = env.NODE_ENV ?? "development";
 
-export const dev = process.env.NODE_ENV !== "production";
+export const dev = env.NODE_ENV !== "production";
+
+export const SECRET = env.SECRET;
 
 export const version = 1;
 
@@ -61,4 +63,9 @@ export const settings = Object.freeze({
 	get MAIN_DOMAIN() {
 		return this.HREFS[0].substring("https://".length, this.HREFS[0].length);
 	}
+});
+
+export const github = Object.freeze({
+	CLIENT_ID: env.GITHUB_CLIENT_ID,
+	CLIENT_SECRET: env.GITHUB_CLIENT_SECRET
 });

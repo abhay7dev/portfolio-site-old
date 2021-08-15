@@ -18,3 +18,11 @@ if ("serviceWorker" in navigator) {
 new window.Swup({
 	plugins: [new window.SwupHeadPlugin()]
 });
+
+// Event listeners
+
+document.querySelectorAll(".github_login").forEach(button => {
+	button.addEventListener("click", () => {
+		location.pathname = "/login";
+	});
+});
