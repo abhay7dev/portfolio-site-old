@@ -6,13 +6,15 @@ import { createServer } from "http";
 const server = createServer(app);
 
 import helmet from "helmet";
+import session from "cookie-session";
 
-import routers from "./modules/routers/";
+import router from "./modules/routers/";
 
 import {
 	settings as config,
 	home,
 	errors,
+	SECRET,
 	NODE_ENV
 } from "./config.js";
 import { join } from "path";
@@ -39,12 +41,14 @@ app.use((req, res, next) => {
 });
 
 app.use(helmet({ xssFilter: false }));
+app.use(session({
+	name: "session",
+	secret: SECRET,
+	maxAge: 1000 * 60 * 60 * 24 * 28,
+}));
 
 app.use(layouts);
-
-app.use(routers.staticRouter);
-app.use(routers.clientRouter);
-app.use("/api/v1/", routers.apis.v1);
+app.use(router);
 
 app.use((req, res) => {
 	res.data.error = errors[404];

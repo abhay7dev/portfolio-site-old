@@ -41,21 +41,13 @@ export const settings = Object.freeze({
 	PORT: env.PORT || 5050,
 	HREFS: Object.freeze([... new Set([
 		"https://abhay7.is-a.dev",
-		`https://${env.REPL_ID}.id.repl.co`,
 		"https://" + (env.REPL_SLUG === env.REPL_OWNER ? `${env.REPL_OWNER}.repl.co` : `${env.REPL_SLUG}.${env.REPL_OWNER}.repl.co`),
-		"https://" + (env.REPL_SLUG === env.REPL_OWNER ? `${env.REPL_OWNER}.repl.co` : `${env.REPL_SLUG}--${env.REPL_OWNER}.repl.co`),
 	].map(href => href.toLowerCase()))]),
 	get REDIRECTS() {
-		if(this.HREFS.indexOf(`https://${env.REPL_OWNER}.repl.co`) !== -1) {
-			return Object.freeze([`https://${env.REPL_OWNER}.github.io`].map(href => href.toLowerCase()));
-		} else {
-			return Object.freeze([
-				`https://${env.REPL_OWNER}.repl.co`,
-				`https://${env.REPL_OWNER}.${env.REPL_OWNER}.repl.co`,
-				`https://${env.REPL_OWNER}--${env.REPL_OWNER}.repl.co`,
-				`https://${env.REPL_OWNER}.github.io`
-			].map(href => href.toLowerCase()));
-		}
+		return Object.freeze([
+			`https://${env.REPL_OWNER}.repl.co`,
+			`https://${env.REPL_OWNER}.github.io`
+		].map(href => href.toLowerCase()));
 	},
 	get MAIN_HREF() {
 		return this.HREFS[0];

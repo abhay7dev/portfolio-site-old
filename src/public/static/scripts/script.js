@@ -26,3 +26,17 @@ document.querySelectorAll(".github_login").forEach(button => {
 		location.pathname = "/login";
 	});
 });
+
+document.querySelectorAll(".github_logout").forEach(button => {
+	button.addEventListener("click", () => {
+		fetch("/logout", {
+			method: "POST"
+		}).then((resp) => {
+			console.log(resp);
+			location.reload();
+		}).catch((err) => {
+			console.err(err);
+			location.reload();
+		});
+	});
+});

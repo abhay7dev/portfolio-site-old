@@ -21,6 +21,7 @@ router.use(
 );
 
 router.get("/", (req, res) => {
+	console.log(req.session.username);
 	res.render("index", {
 		data: res.data,
 	});
@@ -53,9 +54,15 @@ router.get("/contact", (req, res) => {
 });
 
 router.get("/login", (req, res) => {
+	if(req.session.username) return res.redirect("/");
 	const stateString = Math.random().toString(20).substr(2, 16);
 	global.stateCache.push(stateString);
 	res.redirect(`https://github.com/login/oauth/authorize?client_id=${github.CLIENT_ID}&state=${stateString}&allow_signup=false`);
+});
+
+router.post("/logout", (req, res) => {
+	req.session = null;
+	res.end();
 });
 
 export default router;
