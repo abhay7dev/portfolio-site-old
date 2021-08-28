@@ -32,7 +32,8 @@ export default function (req, res, next) {
 		url: `${MAIN_HREF}${req.path}`,
 		year: new Date().getFullYear(),
 		version: `${dev ? "dev-" : ""}${version}`,
-		loggedIn: req.session.username ? true : false,
+		loggedIn: req.session.username && req.session.access_token && req.session.id,
+		isAdmin: req.session.isAdmin,
 		dev
 	};
 	

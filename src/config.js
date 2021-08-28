@@ -1,20 +1,18 @@
 import assert from "assert";
-
 const { env } = process;
 
 export const home = new URL("./", import.meta.url).pathname; // Inside src folder
 
 assert(env.NODE_ENV === undefined || env.NODE_ENV === "production" || env.NODE_ENV === "development");
-
 export const NODE_ENV = env.NODE_ENV ?? "development";
-
 export const dev = env.NODE_ENV !== "production";
 
 export const SECRET = env.SECRET;
+export const ADMIN_ID = env.ADMIN_ID;
 
 export const version = 1;
 
-export const errors = {
+export const errors = Object.freeze({
 	403: {
 		errorType: "403 Forbidden",
 		errorMessage: "Access to the requested resource is prohibited.",
@@ -35,7 +33,7 @@ export const errors = {
 		errorType: "500 Internal server error",
 		errorMessage: "The server could not handle the request which caused an error in returning the resource.",
 	},
-};
+});
 
 export const settings = Object.freeze({
 	PORT: env.PORT || 5050,

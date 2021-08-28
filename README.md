@@ -8,13 +8,14 @@ Abhay's (EpicGamer007) portfolio site.
 
 ## Made with:
 
-* [`ExpressJS`](https://www.npmjs.com/express)
-* [`EJS`](https://www.npmjs.com/ejs) (Apache 2.0)
-* [`Express Rate Limit`](https://www.npmjs.com/express-rate-limit)
-* [`Express EJS Layouts`](https://www.npmjs.com/express-ejs-layouts)
-* [`Helmet`](https://www.npmjs.com/helmet)
-* [`node-fetch`](https://www.npmjs.com/node-fetch)
-* [`cookie-session`](https://www.npmjs.com/cookie-session)
+* [`ExpressJS`](https://npmjs.com/express)
+* [`EJS`](https://npmjs.com/ejs) (Apache 2.0)
+* [`Express Rate Limit`](https://npmjs.com/express-rate-limit)
+* [`Express EJS Layouts`](https://npmjs.com/express-ejs-layouts)
+* [`Helmet`](https://npmjs.com/helmet)
+* [`node-fetch`](https://npmjs.com/node-fetch)
+* [`cookie-session`](https://npmjs.com/cookie-session)
+* [`compression`](https://npmjs.com/compression)
 * [`Swup`](https://swup.js.org)
 
 All packages above are MIT licensed unless otherwise specified. Licenses for the packages can be found in their respective folders in the `node_modules` folder after the `npm install` command is run in the base directory. Dependencies used by the above packages are all licensed under [BSD-Style](https://snyk.io/blog/mit-apache-bsd-fairest-of-them-all/#copyleft-vs-bsd-style-or-permissive-licenses) licenses.

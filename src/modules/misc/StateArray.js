@@ -2,7 +2,7 @@
 
 export default class extends Array {
 
-	constructor(seconds) {
+	constructor(seconds = 300) {
 		super(...arguments);
 		this.seconds = seconds;
 	}

@@ -21,7 +21,7 @@ router.use(
 );
 
 router.get("/", (req, res) => {
-	console.log(req.session.username);
+	console.log(req.session.username, req.session.access_token, req.session.id, req.session.isAdmin);
 	res.render("index", {
 		data: res.data,
 	});
