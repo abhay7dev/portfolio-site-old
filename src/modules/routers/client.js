@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router();
 
-import { errors, dev, github } from "../../config.js";
+import { errors, dev, csp, github } from "../../config.js";
 
 import data from "./middleware/data.js";
 router.use(data);
@@ -21,7 +21,9 @@ router.use(
 );
 
 router.get("/", (req, res) => {
-	console.log(req.session.username, req.session.access_token, req.session.id, req.session.isAdmin);
+	
+	// console.log(req.session.username, req.session.access_token, req.session.id, req.session.isAdmin);
+
 	res.render("index", {
 		data: res.data,
 	});
@@ -51,6 +53,24 @@ router.get("/contact", (req, res) => {
 	res.render("contact", {
 		data: res.data,
 	});
+});
+
+router.get("/halo", async (req, res) => {
+	const cspWithImg = csp.replace(`img-src 'self'`, `img-src 'self' https://emblems.svc.halowaypoint.com/hmcc/emblems/;`);
+	res.set("Content-Security-Policy", cspWithImg);
+	res.render("halo", {
+		data: res.data,
+	});
+});
+
+router.get("/admin", (req, res, next) => {
+	if(req.session.isAdmin) {
+		res.render("admin", {
+			data: res.data,
+		});
+	} else {
+		next();
+	}
 });
 
 router.get("/login", (req, res) => {

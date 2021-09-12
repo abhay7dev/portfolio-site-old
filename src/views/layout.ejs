@@ -4,9 +4,12 @@
 		<%- include("./components/head") %>
 	</head>
 	<body>
+		<a class="skip-to-content-link" href="#swup" data-no-swup="data-no-swup">
+			Skip to main content
+		</a>
 		<%- include("./components/header") %>
 		
-		<main aria-live="polite" id="swup" class="transition-fade">
+		<main aria-live="polite" id="swup" class="transition-fade" tabindex="-1">
 			<%- body %>
 		</main>
 		

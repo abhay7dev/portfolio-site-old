@@ -4,7 +4,7 @@ const { env } = process;
 export const home = new URL("./", import.meta.url).pathname; // Inside src folder
 
 assert(env.NODE_ENV === undefined || env.NODE_ENV === "production" || env.NODE_ENV === "development");
-export const NODE_ENV = env.NODE_ENV ?? "development";
+export const NODE_ENV = env.NODE_ENV || "development";
 export const dev = env.NODE_ENV !== "production";
 
 export const SECRET = env.SECRET;
@@ -59,3 +59,27 @@ export const github = Object.freeze({
 	CLIENT_ID: env.GITHUB_CLIENT_ID,
 	CLIENT_SECRET: env.GITHUB_CLIENT_SECRET
 });
+
+export const csp = `
+		upgrade-insecure-requests;
+		default-src 'none';
+		child-src 'none';
+		frame-src 'none';
+		frame-ancestors 'none';
+		media-src 'none';
+		base-uri 'none';
+		object-src 'none';
+		prefetch-src 'none';
+		manifest-src 'self';
+		img-src 'self';
+		connect-src 'self';
+		font-src ${settings.MAIN_HREF}/static/fonts/;
+		style-src ${settings.MAIN_HREF}/static/styles/;
+		style-src-elem ${settings.MAIN_HREF}/static/styles/;
+		style-src-attr 'none';
+		script-src ${settings.MAIN_HREF}/static/scripts/;
+		script-src-elem ${settings.MAIN_HREF}/static/scripts/;
+		script-src-attr 'none';
+		worker-src ${settings.MAIN_HREF}/static/scripts/;
+		form-action ${settings.MAIN_HREF}/api/;
+	`.replace(/\s/g, " ");

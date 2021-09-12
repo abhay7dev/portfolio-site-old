@@ -3,7 +3,8 @@
 	"type": "module",
 	"version": "1.0.0",
 	"description": "My portfolio site",
-	"main": "index.js",
+	"private": "true",
+	"main": "./src/index.js",
 	"scripts": {
 		"start": "NODE_ENV=production node --experimental-specifier-resolution=node src",
 		"dev": "NODE_ENV=development node --abort-on-uncaught-exception --throw-deprecation --trace-warnings --unhandled-rejections=strict --experimental-specifier-resolution=node src",
@@ -18,7 +19,10 @@
 		"abhay",
 		"epicgamer007"
 	],
-	"author": "EpicGamer007",
+	"author": {
+		"name": "EpicGamer007",
+		"url": "https://abhay7.is-a.dev"
+	},
 	"license": "AGPL-3.0-or-later",
 	"dependencies": {
 		"compression": "^1.7.4",

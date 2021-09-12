@@ -2,7 +2,7 @@ import { github } from "../../config.js";
 
 import fetch from "node-fetch";
 
-export default {
+export default Object.freeze({
 	/**
 	 * Gets access token from github api
 	 * @param {string} code - The code returned from user accepting oauth request
@@ -31,4 +31,4 @@ export default {
 			}
 		)).json();
 	}
-};
+});

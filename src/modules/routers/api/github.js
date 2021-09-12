@@ -1,13 +1,11 @@
 import express from "express";
 const router = express.Router();
 
-import { ADMIN_ID } from "../../config.js";
+import { ADMIN_ID } from "../../../config.js";
 
-import fetch from "node-fetch";
+import github from "../../data/github.js";
 
-import github from "../misc/github.js";
-
-router.get("/oauth", ({ query: { code, state }, session }, res, next) => {
+router.get("/oauth", ({ query: { code, state } }, res, next) => {
 
 	if(!code) return res.send("No code in query parameters");
 	if(!state) return res.send("No state in query parameters");
@@ -22,8 +20,10 @@ router.get("/oauth", ({ query: { code, state }, session }, res, next) => {
 	delete global.stateCache[global.stateCache.indexOf(state)];
 	
 	try {
+
 		const { access_token } = await github.getToken(code);
 		const userData = await github.userData(access_token);
+		
 		if(userData.id) {
 			req.session.access_token = access_token;
 			req.session.username = userData.login;
@@ -33,9 +33,10 @@ router.get("/oauth", ({ query: { code, state }, session }, res, next) => {
 		} else {
 			throw new Error({message: `User data not returned`, info: userData});
 		}
+		
 	} catch(err) {
 		console.log(err);
-		return res.send(err);
+		return res.json(err);
 	}
 });
 

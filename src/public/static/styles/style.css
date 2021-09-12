@@ -1,5 +1,4 @@
-/* Fonts */
-
+/* Fonts *//*
 @font-face {
 	font-family: halo;
 	src: url(/static/fonts/halo.ttf);
@@ -9,9 +8,9 @@
 	font-family: halo-outline;
 	src: url(/static/fonts/halo-outline.ttf);
 }
+*/
 
-/* scrollbar */
-
+/* scrollbar *//*
 ::-webkit-scrollbar {
 	width: 1vh;
 }
@@ -30,9 +29,9 @@
 ::-webkit-scrollbar-thumb:hover {
 	background: rgb(25, 5, 100);
 }
+*/
 
 /* Swup transitions */
-
 .transition-fade {
 	transition: 0.4s;
 	opacity: 1;
@@ -40,4 +39,18 @@
 
 html.is-animating .transition-fade {
 	opacity: 0;
+}
+
+/* Skip to main content */
+.skip-to-content-link {
+	height: 30px;
+	left: 50%;
+	padding: 8px;
+	position: absolute;
+	transform: translateY(-150%);
+	transition: transform 0.3s;
+}
+
+.skip-to-content-link:focus {
+	transform: translateY(0%);
 }

@@ -1,6 +1,6 @@
 import express from "express";
 const router = express.Router();
-import { home } from "../../config.js";
+import { home, dev } from "../../config.js";
 import { join } from "path";
 
 import minify from "express-minify";
@@ -8,8 +8,9 @@ import minify from "express-minify";
 import statheaders from "./middleware/statheaders.js";
 
 router.use(statheaders);
-router.use(minify());
-
+if(!dev) {
+	router.use(minify());
+}
 router.use(
 	express.static(join(home, "public", "root"))
 );
