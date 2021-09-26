@@ -56,9 +56,15 @@ router.get("/contact", (req, res) => {
 });
 
 router.get("/halo", async (req, res) => {
-	const cspWithImg = csp.replace(`img-src 'self'`, `img-src 'self' https://emblems.svc.halowaypoint.com/hmcc/emblems/;`);
-	res.set("Content-Security-Policy", cspWithImg);
 	res.render("halo", {
+		data: res.data,
+	});
+});
+
+router.get("/halo/:id", async (req, res) => {
+	if(!req.params.id) return res.redirect("/halo");
+	res.data.id = req.params.id;
+	res.render("watch", {
 		data: res.data,
 	});
 });
@@ -71,6 +77,10 @@ router.get("/admin", (req, res, next) => {
 	} else {
 		next();
 	}
+});
+
+router.get("/discord", (req, res) => {
+	res.redirect("https://discord.gg/zDbbjKmZXy");
 });
 
 router.get("/login", (req, res) => {

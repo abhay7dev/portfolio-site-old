@@ -10,6 +10,8 @@ export const dev = env.NODE_ENV !== "production";
 export const SECRET = env.SECRET;
 export const ADMIN_ID = env.ADMIN_ID;
 
+export const CRYPTUM_TOKEN = env.CRYPTUM_TOKEN;
+
 export const version = 1;
 
 export const errors = Object.freeze({
@@ -66,12 +68,12 @@ export const csp = `
 		child-src 'none';
 		frame-src 'none';
 		frame-ancestors 'none';
-		media-src 'none';
+		media-src 'self' https://cryptum.halodotapi.com/games/hmcc/media/clips/ *.xboxlive.com;
 		base-uri 'none';
 		object-src 'none';
 		prefetch-src 'none';
 		manifest-src 'self';
-		img-src 'self';
+		img-src 'self' https://emblems.svc.halowaypoint.com/hmcc/emblems/ *.xboxlive.com;
 		connect-src 'self';
 		font-src ${settings.MAIN_HREF}/static/fonts/;
 		style-src ${settings.MAIN_HREF}/static/styles/;

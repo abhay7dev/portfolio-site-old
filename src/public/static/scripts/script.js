@@ -52,11 +52,55 @@ const init = () => {
 					cache: "no-cache"
 				})).json();
 				codeElem.innerText = `Response: ${JSON.stringify(haloInfo)}`;
+				const emblem = document.createElement("img");
+				emblem.src = haloInfo.emblem;
+				button.parentElement.appendChild(emblem);	
 			} catch(err) {
 				codeElem.innerText = `Error: ${err}`;
 			}
 
 			button.parentElement.appendChild(codeElem);
+			button.parentElement.removeChild(button);
+
+		}, {once: true});
+		interactibles.push(button);
+	});
+
+	document.querySelectorAll(".retrieve-halo-clips").forEach((button) => {
+		button.addEventListener("click", async () => {
+
+			let elem;
+
+			button.innerText = "Fetching clips";
+
+			let clips;
+			try {
+				clips = await (await fetch("/api/halo/clips", {
+					cache: "no-cache"
+				})).json();
+			} catch(err) {
+				elem = document.createElement("code");
+				elem.innerText = `Error: ${err}`;
+			}
+
+			if(clips) {
+				elem = document.createElement("ul");
+				elem.classList.add("list-style-type-none");
+				clips.data.forEach((e) => {
+					const li = document.createElement("li");
+					const a = document.createElement("a");
+					a.href = `/halo/${e.id}`;
+					
+					let thumbnail = document.createElement("img");
+					thumbnail.src = e.thumbnail_urls.small.url;
+					a.appendChild(thumbnail);
+
+					li.appendChild(a);
+					elem.appendChild(li);
+				});
+			}
+
+			button.parentElement.appendChild(elem);
 			button.parentElement.removeChild(button);
 
 		}, {once: true});

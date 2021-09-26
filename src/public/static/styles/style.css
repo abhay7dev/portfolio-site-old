@@ -54,3 +54,8 @@ html.is-animating .transition-fade {
 .skip-to-content-link:focus {
 	transform: translateY(0%);
 }
+
+/* List ignore bullet */
+.list-style-type-none {
+	list-style-type: none;
+}

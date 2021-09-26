@@ -35,4 +35,22 @@ router.get("/stats", async (req, res) => {
 	}
 });
 
+router.get("/clips", async (req, res) => {
+	try {
+		const clipsList = await mcc.clips();
+		res.json(clipsList);
+	} catch(err) {
+		console.log(err);
+		res.json({err});
+	}
+});
+
+router.get("/clip/:id", (req, res) => {
+	if(req.params.id) {
+		res.redirect(mcc.clip(req.params.id));
+	} else {
+		res.sendStatus(404);
+	}
+});
+
 export default router;

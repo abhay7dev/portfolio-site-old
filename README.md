@@ -23,7 +23,7 @@ All packages above are MIT licensed unless otherwise specified. Licenses for the
 
 ## APIs
 
-* [`Cards | HaloDotAPI`](https://cards.halodotapi.com/)
+* [`HaloDotApi`](https://halodotapi.com);
 * [`Halo MCC | Autocode`](https://autocode.com/lib/halo/mcc)
 
 ## License
