@@ -8,9 +8,6 @@ export const NODE_ENV = env.NODE_ENV || "development";
 export const dev = env.NODE_ENV !== "production";
 
 export const SECRET = env.SECRET;
-export const ADMIN_ID = env.ADMIN_ID;
-
-export const CRYPTUM_TOKEN = env.CRYPTUM_TOKEN;
 
 export const version = 1;
 
@@ -46,7 +43,8 @@ export const settings = Object.freeze({
 	get REDIRECTS() {
 		return Object.freeze([
 			`https://${env.REPL_OWNER}.repl.co`,
-			`https://${env.REPL_OWNER}.github.io`
+			`https://${env.REPL_OWNER}.github.io`,
+			`https://abhay.thedev.id`
 		].map(href => href.toLowerCase()));
 	},
 	get MAIN_HREF() {
@@ -59,7 +57,13 @@ export const settings = Object.freeze({
 
 export const github = Object.freeze({
 	CLIENT_ID: env.GITHUB_CLIENT_ID,
-	CLIENT_SECRET: env.GITHUB_CLIENT_SECRET
+	CLIENT_SECRET: env.GITHUB_CLIENT_SECRET,
+	ADMIN_ID: env.ADMIN_ID
+});
+
+export const halo = Object.freeze({
+	CRYPTUM_TOKEN: env.CRYPTUM_TOKEN,
+	USER_ID: env.HALO_USER_ID
 });
 
 export const csp = `

@@ -5,7 +5,7 @@ import mcc from "../../data/mcc.js";
 
 router.get("/xp", async (req, res) => {
 	try {
-		const xpImg = await mcc.xp();
+		const xpImg = await mcc.images.xp();
 		res.set("Content-Type", "image/jpeg");
 		xpImg.pipe(res);
 	} catch(err) {
@@ -16,7 +16,7 @@ router.get("/xp", async (req, res) => {
 
 router.get("/ranks", async (req, res) => {
 	try {
-		const ranksImg = await mcc.ranks();
+		const ranksImg = await mcc.images.ranks();
 		res.set("Content-Type", "image/jpeg");
 		ranksImg.pipe(res);
 	} catch(err) {

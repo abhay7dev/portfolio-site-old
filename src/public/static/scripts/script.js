@@ -41,6 +41,8 @@ const init = () => {
 	// Halo (temporary)
 	document.querySelectorAll(".retrieve-halo-stats").forEach((button) => {
 		button.addEventListener("click", async () => {
+
+			const pre = document.createElement("pre");
 			
 			const codeElem = document.createElement("code");
 
@@ -51,15 +53,16 @@ const init = () => {
 				haloInfo = await (await fetch("/api/halo/stats", {
 					cache: "no-cache"
 				})).json();
-				codeElem.innerText = `Response: ${JSON.stringify(haloInfo)}`;
+				codeElem.innerText = `Response: ${JSON.stringify(haloInfo, null, 4)}`;
 				const emblem = document.createElement("img");
-				emblem.src = haloInfo.emblem;
+				emblem.src = haloInfo.additional.appearance.emblem_url;
 				button.parentElement.appendChild(emblem);	
 			} catch(err) {
 				codeElem.innerText = `Error: ${err}`;
 			}
 
-			button.parentElement.appendChild(codeElem);
+			pre.appendChild(codeElem)
+			button.parentElement.appendChild(pre);
 			button.parentElement.removeChild(button);
 
 		}, {once: true});

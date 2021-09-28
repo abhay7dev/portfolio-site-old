@@ -1,7 +1,8 @@
 import express from "express";
 const router = express.Router();
 
-import { ADMIN_ID } from "../../../config.js";
+import { github as githubConfig } from "../../../config.js";
+const { ADMIN_ID } = githubConfig;
 
 import github from "../../data/github.js";
 
