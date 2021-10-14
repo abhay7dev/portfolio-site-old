@@ -12,17 +12,14 @@ if ("serviceWorker" in navigator) {
 	});
 }
 
-const interactibles = [];
-
 const init = () => {
 
-	// Github buttons
 	document.querySelectorAll(".github_login").forEach((button) => {
 		button.addEventListener("click", () => {
 			location.pathname = "/login";
-		}, {once: true});
-		interactibles.push(button);
+		});
 	});
+
 	document.querySelectorAll(".github_logout").forEach((button) => {
 		button.addEventListener("click", () => {
 			fetch("/logout", {
@@ -34,11 +31,10 @@ const init = () => {
 				console.err(err);
 				location.reload();
 			});
-		}, {once: true});
-		interactibles.push(button);
+		});
 	});
 
-	// Halo (temporary)
+	// Temporary: Halo stuff
 	document.querySelectorAll(".retrieve-halo-stats").forEach((button) => {
 		button.addEventListener("click", async () => {
 
@@ -65,8 +61,7 @@ const init = () => {
 			button.parentElement.appendChild(pre);
 			button.parentElement.removeChild(button);
 
-		}, {once: true});
-		interactibles.push(button);
+		});
 	});
 
 	document.querySelectorAll(".retrieve-halo-clips").forEach((button) => {
@@ -106,21 +101,16 @@ const init = () => {
 			button.parentElement.appendChild(elem);
 			button.parentElement.removeChild(button);
 
-		}, {once: true});
-		interactibles.push(button);
+		});
 	});
-
-}
-
-init();
-
-const unload = () => {
-	interactibles.length = 0;
+	
 }
 
 // Swup
 if(window.Swup && window.SwupHeadPlugin) {
-	const plugins = [new window.SwupHeadPlugin()];
+	const plugins = [
+		new window.SwupHeadPlugin(),
+	];
 	if(window.SwupDebugPlugin) {
 		plugins.push(new SwupDebugPlugin());
 	}
@@ -128,7 +118,5 @@ if(window.Swup && window.SwupHeadPlugin) {
 	const swup = new window.Swup({
 		plugins
 	});
-	swup.on('contentReplaced', init);
-	swup.on('willReplaceContent', unload);
+	swup.on("contentReplaced", init);
 }
-// Event listeners
