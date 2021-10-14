@@ -20,60 +20,52 @@ router.use(
 	})
 );
 
+router.use((req, res, next) => {
+	
+	res._render = res.render;
+	res.render = (page) => res._render(page, { data: res.data});
+
+	next();
+});
+
 router.get("/", (req, res) => {
 	
 	// console.log(req.session.username, req.session.access_token, req.session.id, req.session.isAdmin);
 
-	res.render("index", {
-		data: res.data,
-	});
+	res.render("index");
 });
 
 router.get("/about", (req, res) => {
-	res.render("about", {
-		data: res.data
-	});
+	res.render("about");
 });
 
 router.get("/projects", (req, res) => {
 	res.data.projects = [];
-	res.render("projects", {
-		data: res.data,
-	});
+	res.render("projects");
 });
 
 router.get("/blog", (req, res) => {
 	res.data.blogs = [];
-	res.render("blog", {
-		data: res.data,
-	});
+	res.render("blog");
 });
 
 router.get("/contact", (req, res) => {
-	res.render("contact", {
-		data: res.data,
-	});
+	res.render("contact");
 });
 
 router.get("/halo", async (req, res) => {
-	res.render("halo", {
-		data: res.data,
-	});
+	res.render("halo");
 });
 
 router.get("/halo/:id", async (req, res) => {
 	if(!req.params.id) return res.redirect("/halo");
 	res.data.id = req.params.id;
-	res.render("watch", {
-		data: res.data,
-	});
+	res.render("watch");
 });
 
 router.get("/admin", (req, res, next) => {
 	if(req.session.isAdmin) {
-		res.render("admin", {
-			data: res.data,
-		});
+		res.render("admin");
 	} else {
 		next();
 	}
