@@ -23,8 +23,8 @@ All packages above are MIT licensed unless otherwise specified. Licenses for the
 
 ## APIs
 
-* [`HaloDotApi`](https://halodotapi.com);
-* [`Halo MCC | Autocode`](https://autocode.com/lib/halo/mcc)
+* [`HaloDotApi`](https://halodotapi.com)
+* [`GitHub Api`](https://api.github.com)
 
 ## License
 
