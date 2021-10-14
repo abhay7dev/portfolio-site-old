@@ -106,6 +106,13 @@ const init = () => {
 	
 }
 
+const unload = () => {
+	document.querySelectorAll("button").forEach((bt) => {
+		const newElem = bt.cloneNode(true);
+		bt.parentNode.replaceChild(newElem, bt);
+	});
+}
+
 // Swup
 if(window.Swup && window.SwupHeadPlugin) {
 	const plugins = [
@@ -118,5 +125,7 @@ if(window.Swup && window.SwupHeadPlugin) {
 	const swup = new window.Swup({
 		plugins
 	});
+	init();
 	swup.on("contentReplaced", init);
+	swup.on('willReplaceContent', unload);
 }
