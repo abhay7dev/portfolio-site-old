@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router();
 
-import mcc from "../../data/mcc.js";
+import mcc from "../../data/halo.js";
 
 router.get("/xp", async (req, res) => {
 	try {
