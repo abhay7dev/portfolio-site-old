@@ -16,33 +16,33 @@ const fetchHDA = async (url) => {
 }
 
 export default Object.freeze({
-	stats: async () => {
-		return await fetchHDA("/stats/players/EpicGamer007313/service-record");
+	stats: async (username = "EpicGamer007313") => {
+		return await fetchHDA(`/stats/players/${username}/service-record`);
 	},
-	ranks: async () => {
-		return await fetchHDA("/stats/players/EpicGamer007313/ranks");
+	ranks: async (username = "EpicGamer007313") => {
+		return await fetchHDA(`/stats/players/${username}/ranks`);
 	},
-	matches: async () => {
-		return await fetchHDA("/stats/players/EpicGamer007313/recent-matche");
+	matches: async (username = "EpicGamer007313") => {
+		return await fetchHDA(`/stats/players/${username}/recent-matches`);
 	},
-	xp: async () => {
-		return await fetchHDA("/stats/players/EpicGamer007313/xp");
+	xp: async (username = "EpicGamer007313") => {
+		return await fetchHDA(`/stats/players/${username}/xp`);
 	},
-	appearance: async () => {
-		return await fetchHDA("/appearance/players/EpicGamer007313");
+	appearance: async (username = "EpicGamer007313") => {
+		return await fetchHDA(`/appearance/players/${username}`);
 	},
-	clips: async () => {
-		return await fetchHDA("/media/players/EpicGamer007313/clips");
+	clips: async (username = "EpicGamer007313") => {
+		return await fetchHDA(`/media/players/${username}/clips`);
 	},
 	clip: (id) => {
 		return `https://cryptum.halodotapi.com/games/hmcc/media/clips/${USER_ID}-${id}`;
 	},
 	images: {
-		xp: async () => {
-			return (await fetch(`https://cryptum.halodotapi.com/tooling/cards/games/hmcc/stats/players/EpicGamer007313/xp.jpg?v=1&bg=${getRand()}`)).body;
+		xp: async (username = "EpicGamer007313") => {
+			return (await fetch(`https://cryptum.halodotapi.com/tooling/cards/games/hmcc/stats/players/${username}/xp.jpg?v=1&bg=${getRand()}`)).body;
 		},
-		ranks: async () => {
-			return (await fetch(`https://cryptum.halodotapi.com/tooling/cards/games/hmcc/stats/players/EpicGamer007313/ranks.jpg?v=1&bg=${getRand()}`)).body;
+		ranks: async (username = "EpicGamer007313") => {
+			return (await fetch(`https://cryptum.halodotapi.com/tooling/cards/games/hmcc/stats/players/${username}/ranks.jpg?v=1&bg=${getRand()}`)).body;
 		},
 	}
 });
