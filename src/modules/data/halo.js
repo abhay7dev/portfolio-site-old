@@ -37,6 +37,9 @@ export default Object.freeze({
 	clip: (id) => {
 		return `https://cryptum.halodotapi.com/games/hmcc/media/clips/${USER_ID}-${id}`;
 	},
+	screenshots: async (username = "EpicGamer007313") => {
+		return await fetchHDA(`/media/players/${username}/screenshots`);
+	},
 	images: {
 		xp: async (username = "EpicGamer007313") => {
 			return (await fetch(`https://cryptum.halodotapi.com/tooling/cards/games/hmcc/stats/players/${username}/xp.jpg?v=1&bg=${getRand()}`)).body;

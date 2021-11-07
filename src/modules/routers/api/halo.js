@@ -53,4 +53,24 @@ router.get("/clip/:id", (req, res) => {
 	}
 });
 
+router.get("/screenshots", async (req, res) => {
+	try {
+		const sss = await mcc.screenshots();
+		res.json(sss);
+	} catch(err) {
+		console.log(err);
+		res.json({err});
+	}
+});
+
+router.get("/matches", async (req, res) => {
+	try {
+		const matches = await mcc.matches();
+		res.json(matches);
+	} catch(err) {
+		console.log(err);
+		res.json({err});
+	}
+});
+
 export default router;
