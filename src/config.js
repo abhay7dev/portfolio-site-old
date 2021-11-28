@@ -32,6 +32,10 @@ export const errors = Object.freeze({
 		errorType: "500 Internal server error",
 		errorMessage: "The server could not handle the request which caused an error in returning the resource.",
 	},
+	unsupported: {
+		errorType: "Unsupported Browser Error",
+		errorMessage: "Your Browser does not properly display this website, therefore accessing the site is prohibited.",
+	}
 });
 
 export const settings = Object.freeze({

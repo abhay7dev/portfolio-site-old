@@ -1,4 +1,4 @@
-export default function(req, res, next) {
+export default (req, res, next) => {
 
 	if (req.path.indexOf("sw.js") !== -1) {
 		res.set("Service-Worker-Allowed", "../../");

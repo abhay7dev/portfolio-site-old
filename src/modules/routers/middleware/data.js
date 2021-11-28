@@ -1,7 +1,7 @@
 import { settings, dev, version, csp } from "../../../config.js";
 const { MAIN_HREF } = settings;
 
-export default function (req, res, next) {
+export default (req, res, next) => {
 
 	res.data = {
 		href: MAIN_HREF,

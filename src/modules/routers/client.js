@@ -87,4 +87,11 @@ router.post("/logout", (req, res) => {
 	res.end();
 });
 
+router.get("/unsupported", (req, res) => {
+	res.data.error = errors["unsupported"];
+	res.render("error", {
+		data: res.data,
+	});
+});
+
 export default router;
