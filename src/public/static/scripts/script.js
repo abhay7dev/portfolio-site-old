@@ -113,6 +113,8 @@ const unload = () => {
 	});
 }
 
+
+init();
 // Swup
 if(window.Swup && window.SwupHeadPlugin) {
 	const plugins = [
@@ -125,7 +127,6 @@ if(window.Swup && window.SwupHeadPlugin) {
 	const swup = new window.Swup({
 		plugins
 	});
-	init();
 	swup.on("contentReplaced", init);
 	swup.on('willReplaceContent', unload);
 }
