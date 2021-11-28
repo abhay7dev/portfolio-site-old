@@ -31,15 +31,15 @@ export default Object.freeze({
 	appearance: async (username = "EpicGamer007313") => {
 		return await fetchHDA(`/appearance/players/${username}`);
 	},
-	clips: async (username = "EpicGamer007313") => {
-		return await fetchHDA(`/media/players/${username}/clips`);
-	},
-	clip: (id) => {
-		return `https://cryptum.halodotapi.com/games/hmcc/media/clips/${USER_ID}-${id}`;
-	},
 	screenshots: async (username = "EpicGamer007313") => {
 		return await fetchHDA(`/media/players/${username}/screenshots`);
 	},
+	clips: async (username = "EpicGamer007313") => {
+		return await fetchHDA(`/media/players/${username}/clips`);
+	},
+	/* clip: (id) => {
+		return `https://cryptum.halodotapi.com/games/hmcc/media/clips/${USER_ID}-${id}`;
+	}, */
 	images: {
 		xp: async (username = "EpicGamer007313") => {
 			return (await fetch(`https://cryptum.halodotapi.com/tooling/cards/games/hmcc/stats/players/${username}/xp.jpg?v=1&bg=${getRand()}`)).body;
