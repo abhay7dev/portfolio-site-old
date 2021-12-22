@@ -80,10 +80,3 @@ export default Object.freeze({
 		},	
 	},
 });
-
-/**
- * Fetches Halo mcc statistics
-
-stats: async () => {
-return await (await fetch("https://halo.api.stdlib.com/mcc@0.1.0/stats?gamertag=epicgamer007313")).json();
-}, */
