@@ -41,14 +41,15 @@ export const errors = Object.freeze({
 export const settings = Object.freeze({
 	PORT: env.PORT || 5050,
 	HREFS: Object.freeze([... new Set([
-		"https://abhay7.is-a.dev",
+		"https://abhay.runs-on.tech",
 		"https://" + (env.REPL_SLUG === env.REPL_OWNER ? `${env.REPL_OWNER}.repl.co` : `${env.REPL_SLUG}.${env.REPL_OWNER}.repl.co`),
 	].map(href => href.toLowerCase()))]),
 	get REDIRECTS() {
 		return Object.freeze([
 			`https://${env.REPL_OWNER}.repl.co`,
 			`https://${env.REPL_OWNER}.github.io`,
-			`https://abhay.thedev.id`
+			`https://abhay.thedev.id`,
+			`https://abhay7.is-a.dev`
 		].map(href => href.toLowerCase()));
 	},
 	get MAIN_HREF() {
