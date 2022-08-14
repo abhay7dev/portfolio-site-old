@@ -41,7 +41,7 @@ export const errors = Object.freeze({
 export const settings = Object.freeze({
 	PORT: env.PORT || 5050,
 	HREFS: Object.freeze([... new Set([
-		"https://portfolio-site.epicgamer007.repl.co",
+		"https://portfolio-site-old.epicgamer007.repl.co",
 		"https://" + (env.REPL_SLUG === env.REPL_OWNER ? `${env.REPL_OWNER}.repl.co` : `${env.REPL_SLUG}.${env.REPL_OWNER}.repl.co`),
 	].map(href => href.toLowerCase()))]),
 	get REDIRECTS() {
